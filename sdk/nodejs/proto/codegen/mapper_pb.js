@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var proto = { pulumirpc: { codegen: { }, testing: { } } }, global = proto;
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 goog.exportSymbol('proto.codegen.GetMappingRequest', null, global);
 goog.exportSymbol('proto.codegen.GetMappingResponse', null, global);
@@ -91,8 +97,8 @@ proto.codegen.GetMappingRequest.prototype.toObject = function(opt_includeInstanc
  */
 proto.codegen.GetMappingRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    provider: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    pulumiProvider: jspb.Message.getFieldWithDefault(msg, 2, "")
+provider: jspb.Message.getFieldWithDefault(msg, 1, ""),
+pulumiProvider: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -251,7 +257,7 @@ proto.codegen.GetMappingResponse.prototype.toObject = function(opt_includeInstan
  */
 proto.codegen.GetMappingResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    data: msg.getData_asB64()
+data: msg.getData_asB64()
   };
 
   if (includeInstance) {

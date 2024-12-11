@@ -15,17 +15,39 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
+
 import abc
+import collections.abc
 import grpc
+import grpc.aio
 import pulumi.codegen.mapper_pb2
+import typing
+
+_T = typing.TypeVar("_T")
+
+class _MaybeAsyncIterator(collections.abc.AsyncIterator[_T], collections.abc.Iterator[_T], metaclass=abc.ABCMeta): ...
+
+class _ServicerContext(grpc.ServicerContext, grpc.aio.ServicerContext):  # type: ignore[misc, type-arg]
+    ...
 
 class MapperStub:
     """Mapper is a service for getting mappings from other ecosystems to Pulumi.
     This is currently unstable and experimental.
     """
 
-    def __init__(self, channel: grpc.Channel) -> None: ...
+    def __init__(self, channel: typing.Union[grpc.Channel, grpc.aio.Channel]) -> None: ...
     GetMapping: grpc.UnaryUnaryMultiCallable[
+        pulumi.codegen.mapper_pb2.GetMappingRequest,
+        pulumi.codegen.mapper_pb2.GetMappingResponse,
+    ]
+    """GetMapping tries to find a mapping for the given provider."""
+
+class MapperAsyncStub:
+    """Mapper is a service for getting mappings from other ecosystems to Pulumi.
+    This is currently unstable and experimental.
+    """
+
+    GetMapping: grpc.aio.UnaryUnaryMultiCallable[
         pulumi.codegen.mapper_pb2.GetMappingRequest,
         pulumi.codegen.mapper_pb2.GetMappingResponse,
     ]
@@ -40,8 +62,8 @@ class MapperServicer(metaclass=abc.ABCMeta):
     def GetMapping(
         self,
         request: pulumi.codegen.mapper_pb2.GetMappingRequest,
-        context: grpc.ServicerContext,
-    ) -> pulumi.codegen.mapper_pb2.GetMappingResponse:
+        context: _ServicerContext,
+    ) -> typing.Union[pulumi.codegen.mapper_pb2.GetMappingResponse, collections.abc.Awaitable[pulumi.codegen.mapper_pb2.GetMappingResponse]]:
         """GetMapping tries to find a mapping for the given provider."""
 
-def add_MapperServicer_to_server(servicer: MapperServicer, server: grpc.Server) -> None: ...
+def add_MapperServicer_to_server(servicer: MapperServicer, server: typing.Union[grpc.Server, grpc.aio.Server]) -> None: ...

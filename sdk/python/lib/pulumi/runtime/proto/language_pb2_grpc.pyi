@@ -15,21 +15,31 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
+
 import abc
 import collections.abc
 import google.protobuf.empty_pb2
 import grpc
 import grpc.aio
 import typing
+import grpc.aio
 import pulumi.language_pb2
 import pulumi.plugin_pb2
+import typing
+
+_T = typing.TypeVar("_T")
+
+class _MaybeAsyncIterator(collections.abc.AsyncIterator[_T], collections.abc.Iterator[_T], metaclass=abc.ABCMeta): ...
+
+class _ServicerContext(grpc.ServicerContext, grpc.aio.ServicerContext):  # type: ignore[misc, type-arg]
+    ...
 
 class LanguageRuntimeStub:
     """LanguageRuntime is the interface that the planning monitor uses to drive execution of an interpreter responsible
     for confguring and creating resource objects.
     """
 
-    def __init__(self, channel: grpc.Channel) -> None: ...
+    def __init__(self, channel: typing.Union[grpc.Channel, grpc.aio.Channel]) -> None: ...
     Handshake: grpc.UnaryUnaryMultiCallable[
         pulumi.language_pb2.LanguageHandshakeRequest,
         pulumi.language_pb2.LanguageHandshakeResponse,
@@ -38,67 +48,172 @@ class LanguageRuntimeStub:
     engine's address to the language host so that it may establish its own connections back,
     and to establish protocol configuration that will be used to communicate between the two parties.
     """
+
     GetRequiredPlugins: grpc.UnaryUnaryMultiCallable[
         pulumi.language_pb2.GetRequiredPluginsRequest,
         pulumi.language_pb2.GetRequiredPluginsResponse,
     ]
     """GetRequiredPlugins computes the complete set of anticipated plugins required by a program."""
+
     GetRequiredPackages: grpc.UnaryUnaryMultiCallable[
         pulumi.language_pb2.GetRequiredPackagesRequest,
         pulumi.language_pb2.GetRequiredPackagesResponse,
     ]
     """GetRequiredPackages computes the complete set of anticipated packages required by a program."""
+
     Run: grpc.UnaryUnaryMultiCallable[
         pulumi.language_pb2.RunRequest,
         pulumi.language_pb2.RunResponse,
     ]
     """Run executes a program and returns its result."""
+
     GetPluginInfo: grpc.UnaryUnaryMultiCallable[
         google.protobuf.empty_pb2.Empty,
         pulumi.plugin_pb2.PluginInfo,
     ]
     """GetPluginInfo returns generic information about this plugin, like its version."""
+
     InstallDependencies: grpc.UnaryStreamMultiCallable[
         pulumi.language_pb2.InstallDependenciesRequest,
         pulumi.language_pb2.InstallDependenciesResponse,
     ]
     """InstallDependencies will install dependencies for the project, e.g. by running `npm install` for nodejs projects."""
+
     RuntimeOptionsPrompts: grpc.UnaryUnaryMultiCallable[
         pulumi.language_pb2.RuntimeOptionsRequest,
         pulumi.language_pb2.RuntimeOptionsResponse,
     ]
     """RuntimeOptionsPrompts returns a list of additional prompts to ask during `pulumi new`."""
+
     About: grpc.UnaryUnaryMultiCallable[
         pulumi.language_pb2.AboutRequest,
         pulumi.language_pb2.AboutResponse,
     ]
     """About returns information about the runtime for this language."""
+
     GetProgramDependencies: grpc.UnaryUnaryMultiCallable[
         pulumi.language_pb2.GetProgramDependenciesRequest,
         pulumi.language_pb2.GetProgramDependenciesResponse,
     ]
     """GetProgramDependencies returns the set of dependencies required by the program."""
+
     RunPlugin: grpc.UnaryStreamMultiCallable[
         pulumi.language_pb2.RunPluginRequest,
         pulumi.language_pb2.RunPluginResponse,
     ]
     """RunPlugin executes a plugin program and returns its result asynchronously."""
+
     GenerateProgram: grpc.UnaryUnaryMultiCallable[
         pulumi.language_pb2.GenerateProgramRequest,
         pulumi.language_pb2.GenerateProgramResponse,
     ]
     """GenerateProgram generates a given PCL program into a program for this language."""
+
     GenerateProject: grpc.UnaryUnaryMultiCallable[
         pulumi.language_pb2.GenerateProjectRequest,
         pulumi.language_pb2.GenerateProjectResponse,
     ]
     """GenerateProject generates a given PCL program into a project for this language."""
+
     GeneratePackage: grpc.UnaryUnaryMultiCallable[
         pulumi.language_pb2.GeneratePackageRequest,
         pulumi.language_pb2.GeneratePackageResponse,
     ]
     """GeneratePackage generates a given pulumi package into a package for this language."""
+
     Pack: grpc.UnaryUnaryMultiCallable[
+        pulumi.language_pb2.PackRequest,
+        pulumi.language_pb2.PackResponse,
+    ]
+    """Pack packs a package into a language specific artifact."""
+
+class LanguageRuntimeAsyncStub:
+    """LanguageRuntime is the interface that the planning monitor uses to drive execution of an interpreter responsible
+    for confguring and creating resource objects.
+    """
+
+    Handshake: grpc.aio.UnaryUnaryMultiCallable[
+        pulumi.language_pb2.LanguageHandshakeRequest,
+        pulumi.language_pb2.LanguageHandshakeResponse,
+    ]
+    """`Handshake` is the first call made by the engine to a language host. It is used to pass the 
+    engine's address to the language host so that it may establish its own connections back,
+    and to establish protocol configuration that will be used to communicate between the two parties.
+    """
+
+    GetRequiredPlugins: grpc.aio.UnaryUnaryMultiCallable[
+        pulumi.language_pb2.GetRequiredPluginsRequest,
+        pulumi.language_pb2.GetRequiredPluginsResponse,
+    ]
+    """GetRequiredPlugins computes the complete set of anticipated plugins required by a program."""
+
+    GetRequiredPackages: grpc.aio.UnaryUnaryMultiCallable[
+        pulumi.language_pb2.GetRequiredPackagesRequest,
+        pulumi.language_pb2.GetRequiredPackagesResponse,
+    ]
+    """GetRequiredPackages computes the complete set of anticipated packages required by a program."""
+
+    Run: grpc.aio.UnaryUnaryMultiCallable[
+        pulumi.language_pb2.RunRequest,
+        pulumi.language_pb2.RunResponse,
+    ]
+    """Run executes a program and returns its result."""
+
+    GetPluginInfo: grpc.aio.UnaryUnaryMultiCallable[
+        google.protobuf.empty_pb2.Empty,
+        pulumi.plugin_pb2.PluginInfo,
+    ]
+    """GetPluginInfo returns generic information about this plugin, like its version."""
+
+    InstallDependencies: grpc.aio.UnaryStreamMultiCallable[
+        pulumi.language_pb2.InstallDependenciesRequest,
+        pulumi.language_pb2.InstallDependenciesResponse,
+    ]
+    """InstallDependencies will install dependencies for the project, e.g. by running `npm install` for nodejs projects."""
+
+    RuntimeOptionsPrompts: grpc.aio.UnaryUnaryMultiCallable[
+        pulumi.language_pb2.RuntimeOptionsRequest,
+        pulumi.language_pb2.RuntimeOptionsResponse,
+    ]
+    """RuntimeOptionsPrompts returns a list of additional prompts to ask during `pulumi new`."""
+
+    About: grpc.aio.UnaryUnaryMultiCallable[
+        pulumi.language_pb2.AboutRequest,
+        pulumi.language_pb2.AboutResponse,
+    ]
+    """About returns information about the runtime for this language."""
+
+    GetProgramDependencies: grpc.aio.UnaryUnaryMultiCallable[
+        pulumi.language_pb2.GetProgramDependenciesRequest,
+        pulumi.language_pb2.GetProgramDependenciesResponse,
+    ]
+    """GetProgramDependencies returns the set of dependencies required by the program."""
+
+    RunPlugin: grpc.aio.UnaryStreamMultiCallable[
+        pulumi.language_pb2.RunPluginRequest,
+        pulumi.language_pb2.RunPluginResponse,
+    ]
+    """RunPlugin executes a plugin program and returns its result asynchronously."""
+
+    GenerateProgram: grpc.aio.UnaryUnaryMultiCallable[
+        pulumi.language_pb2.GenerateProgramRequest,
+        pulumi.language_pb2.GenerateProgramResponse,
+    ]
+    """GenerateProgram generates a given PCL program into a program for this language."""
+
+    GenerateProject: grpc.aio.UnaryUnaryMultiCallable[
+        pulumi.language_pb2.GenerateProjectRequest,
+        pulumi.language_pb2.GenerateProjectResponse,
+    ]
+    """GenerateProject generates a given PCL program into a project for this language."""
+
+    GeneratePackage: grpc.aio.UnaryUnaryMultiCallable[
+        pulumi.language_pb2.GeneratePackageRequest,
+        pulumi.language_pb2.GeneratePackageResponse,
+    ]
+    """GeneratePackage generates a given pulumi package into a package for this language."""
+
+    Pack: grpc.aio.UnaryUnaryMultiCallable[
         pulumi.language_pb2.PackRequest,
         pulumi.language_pb2.PackResponse,
     ]
@@ -113,102 +228,115 @@ class LanguageRuntimeServicer(metaclass=abc.ABCMeta):
     def Handshake(
         self,
         request: pulumi.language_pb2.LanguageHandshakeRequest,
-        context: grpc.ServicerContext,
-    ) -> pulumi.language_pb2.LanguageHandshakeResponse:
+        context: _ServicerContext,
+    ) -> typing.Union[pulumi.language_pb2.LanguageHandshakeResponse, collections.abc.Awaitable[pulumi.language_pb2.LanguageHandshakeResponse]]:
         """`Handshake` is the first call made by the engine to a language host. It is used to pass the 
         engine's address to the language host so that it may establish its own connections back,
         and to establish protocol configuration that will be used to communicate between the two parties.
         """
+
     
     def GetRequiredPlugins(
         self,
         request: pulumi.language_pb2.GetRequiredPluginsRequest,
-        context: grpc.ServicerContext,
-    ) -> pulumi.language_pb2.GetRequiredPluginsResponse:
+        context: _ServicerContext,
+    ) -> typing.Union[pulumi.language_pb2.GetRequiredPluginsResponse, collections.abc.Awaitable[pulumi.language_pb2.GetRequiredPluginsResponse]]:
         """GetRequiredPlugins computes the complete set of anticipated plugins required by a program."""
+
     
     def GetRequiredPackages(
         self,
         request: pulumi.language_pb2.GetRequiredPackagesRequest,
-        context: grpc.ServicerContext,
-    ) -> pulumi.language_pb2.GetRequiredPackagesResponse:
+        context: _ServicerContext,
+    ) -> typing.Union[pulumi.language_pb2.GetRequiredPackagesResponse, collections.abc.Awaitable[pulumi.language_pb2.GetRequiredPackagesResponse]]:
         """GetRequiredPackages computes the complete set of anticipated packages required by a program."""
+
     
     def Run(
         self,
         request: pulumi.language_pb2.RunRequest,
-        context: grpc.ServicerContext,
-    ) -> pulumi.language_pb2.RunResponse:
+        context: _ServicerContext,
+    ) -> typing.Union[pulumi.language_pb2.RunResponse, collections.abc.Awaitable[pulumi.language_pb2.RunResponse]]:
         """Run executes a program and returns its result."""
+
     
     def GetPluginInfo(
         self,
         request: google.protobuf.empty_pb2.Empty,
-        context: grpc.ServicerContext,
-    ) -> pulumi.plugin_pb2.PluginInfo:
+        context: _ServicerContext,
+    ) -> typing.Union[pulumi.plugin_pb2.PluginInfo, collections.abc.Awaitable[pulumi.plugin_pb2.PluginInfo]]:
         """GetPluginInfo returns generic information about this plugin, like its version."""
+
     
     def InstallDependencies(
         self,
         request: pulumi.language_pb2.InstallDependenciesRequest,
-        context: grpc.ServicerContext,
-    ) -> collections.abc.Iterator[pulumi.language_pb2.InstallDependenciesResponse]:
+        context: _ServicerContext,
+    ) -> typing.Union[collections.abc.Iterator[pulumi.language_pb2.InstallDependenciesResponse], collections.abc.AsyncIterator[pulumi.language_pb2.InstallDependenciesResponse]]:
         """InstallDependencies will install dependencies for the project, e.g. by running `npm install` for nodejs projects."""
+
     
     def RuntimeOptionsPrompts(
         self,
         request: pulumi.language_pb2.RuntimeOptionsRequest,
-        context: grpc.ServicerContext,
-    ) -> pulumi.language_pb2.RuntimeOptionsResponse:
+        context: _ServicerContext,
+    ) -> typing.Union[pulumi.language_pb2.RuntimeOptionsResponse, collections.abc.Awaitable[pulumi.language_pb2.RuntimeOptionsResponse]]:
         """RuntimeOptionsPrompts returns a list of additional prompts to ask during `pulumi new`."""
+
     
     def About(
         self,
         request: pulumi.language_pb2.AboutRequest,
-        context: grpc.ServicerContext,
-    ) -> pulumi.language_pb2.AboutResponse:
+        context: _ServicerContext,
+    ) -> typing.Union[pulumi.language_pb2.AboutResponse, collections.abc.Awaitable[pulumi.language_pb2.AboutResponse]]:
         """About returns information about the runtime for this language."""
+
     
     def GetProgramDependencies(
         self,
         request: pulumi.language_pb2.GetProgramDependenciesRequest,
-        context: grpc.ServicerContext,
-    ) -> pulumi.language_pb2.GetProgramDependenciesResponse:
+        context: _ServicerContext,
+    ) -> typing.Union[pulumi.language_pb2.GetProgramDependenciesResponse, collections.abc.Awaitable[pulumi.language_pb2.GetProgramDependenciesResponse]]:
         """GetProgramDependencies returns the set of dependencies required by the program."""
+
     
     def RunPlugin(
         self,
         request: pulumi.language_pb2.RunPluginRequest,
-        context: grpc.ServicerContext,
-    ) -> collections.abc.Iterator[pulumi.language_pb2.RunPluginResponse]:
+        context: _ServicerContext,
+    ) -> typing.Union[collections.abc.Iterator[pulumi.language_pb2.RunPluginResponse], collections.abc.AsyncIterator[pulumi.language_pb2.RunPluginResponse]]:
         """RunPlugin executes a plugin program and returns its result asynchronously."""
+
     
     def GenerateProgram(
         self,
         request: pulumi.language_pb2.GenerateProgramRequest,
-        context: grpc.ServicerContext,
-    ) -> pulumi.language_pb2.GenerateProgramResponse:
+        context: _ServicerContext,
+    ) -> typing.Union[pulumi.language_pb2.GenerateProgramResponse, collections.abc.Awaitable[pulumi.language_pb2.GenerateProgramResponse]]:
         """GenerateProgram generates a given PCL program into a program for this language."""
+
     
     def GenerateProject(
         self,
         request: pulumi.language_pb2.GenerateProjectRequest,
-        context: grpc.ServicerContext,
-    ) -> pulumi.language_pb2.GenerateProjectResponse:
+        context: _ServicerContext,
+    ) -> typing.Union[pulumi.language_pb2.GenerateProjectResponse, collections.abc.Awaitable[pulumi.language_pb2.GenerateProjectResponse]]:
         """GenerateProject generates a given PCL program into a project for this language."""
+
     
     def GeneratePackage(
         self,
         request: pulumi.language_pb2.GeneratePackageRequest,
-        context: grpc.ServicerContext,
-    ) -> pulumi.language_pb2.GeneratePackageResponse:
+        context: _ServicerContext,
+    ) -> typing.Union[pulumi.language_pb2.GeneratePackageResponse, collections.abc.Awaitable[pulumi.language_pb2.GeneratePackageResponse]]:
         """GeneratePackage generates a given pulumi package into a package for this language."""
+
     
     def Pack(
         self,
         request: pulumi.language_pb2.PackRequest,
-        context: grpc.ServicerContext,
-    ) -> pulumi.language_pb2.PackResponse:
+        context: _ServicerContext,
+    ) -> typing.Union[pulumi.language_pb2.PackResponse, collections.abc.Awaitable[pulumi.language_pb2.PackResponse]]:
         """Pack packs a package into a language specific artifact."""
 
 def add_LanguageRuntimeServicer_to_server(servicer: LanguageRuntimeServicer, server: typing.Union[grpc.Server, grpc.aio.Server]) -> None: ...

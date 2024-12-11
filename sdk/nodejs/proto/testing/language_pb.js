@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var proto = { pulumirpc: { codegen: { }, testing: { } } }, global = proto;
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 goog.exportSymbol('proto.pulumirpc.testing.GetLanguageTestsRequest', null, global);
 goog.exportSymbol('proto.pulumirpc.testing.GetLanguageTestsResponse', null, global);
@@ -309,7 +315,7 @@ proto.pulumirpc.testing.GetLanguageTestsResponse.prototype.toObject = function(o
  */
 proto.pulumirpc.testing.GetLanguageTestsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    testsList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
+testsList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -465,15 +471,15 @@ proto.pulumirpc.testing.PrepareLanguageTestsRequest.prototype.toObject = functio
  */
 proto.pulumirpc.testing.PrepareLanguageTestsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    languagePluginName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    languagePluginTarget: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    snapshotDirectory: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    temporaryDirectory: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    coreSdkDirectory: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    coreSdkVersion: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    snapshotEditsList: jspb.Message.toObjectList(msg.getSnapshotEditsList(),
+languagePluginName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+languagePluginTarget: jspb.Message.getFieldWithDefault(msg, 2, ""),
+snapshotDirectory: jspb.Message.getFieldWithDefault(msg, 3, ""),
+temporaryDirectory: jspb.Message.getFieldWithDefault(msg, 4, ""),
+coreSdkDirectory: jspb.Message.getFieldWithDefault(msg, 5, ""),
+coreSdkVersion: jspb.Message.getFieldWithDefault(msg, 6, ""),
+snapshotEditsList: jspb.Message.toObjectList(msg.getSnapshotEditsList(),
     proto.pulumirpc.testing.PrepareLanguageTestsRequest.Replacement.toObject, includeInstance),
-    languageInfo: jspb.Message.getFieldWithDefault(msg, 8, "")
+languageInfo: jspb.Message.getFieldWithDefault(msg, 8, "")
   };
 
   if (includeInstance) {
@@ -664,9 +670,9 @@ proto.pulumirpc.testing.PrepareLanguageTestsRequest.Replacement.prototype.toObje
  */
 proto.pulumirpc.testing.PrepareLanguageTestsRequest.Replacement.toObject = function(includeInstance, msg) {
   var f, obj = {
-    path: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    pattern: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    replacement: jspb.Message.getFieldWithDefault(msg, 3, "")
+path: jspb.Message.getFieldWithDefault(msg, 1, ""),
+pattern: jspb.Message.getFieldWithDefault(msg, 2, ""),
+replacement: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -1018,7 +1024,7 @@ proto.pulumirpc.testing.PrepareLanguageTestsResponse.prototype.toObject = functi
  */
 proto.pulumirpc.testing.PrepareLanguageTestsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    token: jspb.Message.getFieldWithDefault(msg, 1, "")
+token: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -1148,8 +1154,8 @@ proto.pulumirpc.testing.RunLanguageTestRequest.prototype.toObject = function(opt
  */
 proto.pulumirpc.testing.RunLanguageTestRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    token: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    test: jspb.Message.getFieldWithDefault(msg, 2, "")
+token: jspb.Message.getFieldWithDefault(msg, 1, ""),
+test: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -1315,10 +1321,10 @@ proto.pulumirpc.testing.RunLanguageTestResponse.prototype.toObject = function(op
  */
 proto.pulumirpc.testing.RunLanguageTestResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
-    messagesList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
-    stdout: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    stderr: jspb.Message.getFieldWithDefault(msg, 4, "")
+success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
+messagesList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
+stdout: jspb.Message.getFieldWithDefault(msg, 3, ""),
+stderr: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {

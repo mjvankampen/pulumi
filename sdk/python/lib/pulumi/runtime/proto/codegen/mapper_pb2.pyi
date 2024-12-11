@@ -15,19 +15,15 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
+
 import builtins
 import google.protobuf.descriptor
 import google.protobuf.message
-import sys
-
-if sys.version_info >= (3, 8):
-    import typing as typing_extensions
-else:
-    import typing_extensions
+import typing
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
-@typing_extensions.final
+@typing.final
 class GetMappingRequest(google.protobuf.message.Message):
     """GetMappingRequest allows the engine to return ecosystem specific information to allow the converter to be
     convert provider types from a source markup to Pulumi.
@@ -47,11 +43,11 @@ class GetMappingRequest(google.protobuf.message.Message):
         provider: builtins.str = ...,
         pulumi_provider: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["provider", b"provider", "pulumi_provider", b"pulumi_provider"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["provider", b"provider", "pulumi_provider", b"pulumi_provider"]) -> None: ...
 
 global___GetMappingRequest = GetMappingRequest
 
-@typing_extensions.final
+@typing.final
 class GetMappingResponse(google.protobuf.message.Message):
     """GetMappingResponse returns converter plugin specific data for the requested provider. This will normally be human
     readable JSON, but the engine doesn't mandate any form.
@@ -67,6 +63,6 @@ class GetMappingResponse(google.protobuf.message.Message):
         *,
         data: builtins.bytes = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["data", b"data"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data"]) -> None: ...
 
 global___GetMappingResponse = GetMappingResponse

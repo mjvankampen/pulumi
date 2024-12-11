@@ -252,14 +252,18 @@ def _invoke(
             "PULUMI_DISABLE_RESOURCE_REFERENCES", ""
         ).upper() not in {"TRUE", "1"}
         log.debug(f"Invoking function prepared: tok={tok}")
+        invoke_request_args = {
+            "tok": tok,
+            "provider": provider_ref or "",
+            "version": version,
+            "acceptResources": accept_resources,
+            "pluginDownloadURL": plugin_download_url,
+            "packageRef": package_ref_str or "",
+        }
+        if plain_inputs:
+            invoke_request_args["args"] = plain_inputs
         req = resource_pb2.ResourceInvokeRequest(
-            tok=tok,
-            args=plain_inputs,
-            provider=provider_ref or "",
-            version=version,
-            acceptResources=accept_resources,
-            pluginDownloadURL=plugin_download_url,
-            packageRef=package_ref_str or "",
+            **invoke_request_args,
         )
 
         def do_invoke():

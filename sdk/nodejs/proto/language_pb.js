@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var proto = { pulumirpc: { codegen: { }, testing: { } } }, global = proto;
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 var pulumi_codegen_hcl_pb = require('./codegen/hcl_pb.js');
 goog.object.extend(proto, pulumi_codegen_hcl_pb);
@@ -717,10 +723,10 @@ proto.pulumirpc.ProgramInfo.prototype.toObject = function(opt_includeInstance) {
  */
 proto.pulumirpc.ProgramInfo.toObject = function(includeInstance, msg) {
   var f, obj = {
-    rootDirectory: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    programDirectory: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    entryPoint: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    options: (f = msg.getOptions()) && google_protobuf_struct_pb.Struct.toObject(includeInstance, f)
+rootDirectory: jspb.Message.getFieldWithDefault(msg, 1, ""),
+programDirectory: jspb.Message.getFieldWithDefault(msg, 2, ""),
+entryPoint: jspb.Message.getFieldWithDefault(msg, 3, ""),
+options: (f = msg.getOptions()) && google_protobuf_struct_pb.Struct.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -958,7 +964,7 @@ proto.pulumirpc.AboutRequest.prototype.toObject = function(opt_includeInstance) 
  */
 proto.pulumirpc.AboutRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    info: (f = msg.getInfo()) && proto.pulumirpc.ProgramInfo.toObject(includeInstance, f)
+info: (f = msg.getInfo()) && proto.pulumirpc.ProgramInfo.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1109,9 +1115,9 @@ proto.pulumirpc.AboutResponse.prototype.toObject = function(opt_includeInstance)
  */
 proto.pulumirpc.AboutResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    executable: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    version: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    metadataMap: (f = msg.getMetadataMap()) ? f.toObject(includeInstance, undefined) : []
+executable: jspb.Message.getFieldWithDefault(msg, 1, ""),
+version: jspb.Message.getFieldWithDefault(msg, 2, ""),
+metadataMap: (f = msg.getMetadataMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -1267,7 +1273,8 @@ proto.pulumirpc.AboutResponse.prototype.getMetadataMap = function(opt_noLazyCrea
  */
 proto.pulumirpc.AboutResponse.prototype.clearMetadataMap = function() {
   this.getMetadataMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -1302,11 +1309,11 @@ proto.pulumirpc.GetProgramDependenciesRequest.prototype.toObject = function(opt_
  */
 proto.pulumirpc.GetProgramDependenciesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    project: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    pwd: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    program: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    transitivedependencies: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-    info: (f = msg.getInfo()) && proto.pulumirpc.ProgramInfo.toObject(includeInstance, f)
+project: jspb.Message.getFieldWithDefault(msg, 1, ""),
+pwd: jspb.Message.getFieldWithDefault(msg, 2, ""),
+program: jspb.Message.getFieldWithDefault(msg, 3, ""),
+transitivedependencies: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+info: (f = msg.getInfo()) && proto.pulumirpc.ProgramInfo.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1573,8 +1580,8 @@ proto.pulumirpc.DependencyInfo.prototype.toObject = function(opt_includeInstance
  */
 proto.pulumirpc.DependencyInfo.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    version: jspb.Message.getFieldWithDefault(msg, 2, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+version: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -1740,7 +1747,7 @@ proto.pulumirpc.GetProgramDependenciesResponse.prototype.toObject = function(opt
  */
 proto.pulumirpc.GetProgramDependenciesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    dependenciesList: jspb.Message.toObjectList(msg.getDependenciesList(),
+dependenciesList: jspb.Message.toObjectList(msg.getDependenciesList(),
     proto.pulumirpc.DependencyInfo.toObject, includeInstance)
   };
 
@@ -1893,10 +1900,10 @@ proto.pulumirpc.GetRequiredPluginsRequest.prototype.toObject = function(opt_incl
  */
 proto.pulumirpc.GetRequiredPluginsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    project: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    pwd: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    program: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    info: (f = msg.getInfo()) && proto.pulumirpc.ProgramInfo.toObject(includeInstance, f)
+project: jspb.Message.getFieldWithDefault(msg, 1, ""),
+pwd: jspb.Message.getFieldWithDefault(msg, 2, ""),
+program: jspb.Message.getFieldWithDefault(msg, 3, ""),
+info: (f = msg.getInfo()) && proto.pulumirpc.ProgramInfo.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2141,7 +2148,7 @@ proto.pulumirpc.GetRequiredPluginsResponse.prototype.toObject = function(opt_inc
  */
 proto.pulumirpc.GetRequiredPluginsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    pluginsList: jspb.Message.toObjectList(msg.getPluginsList(),
+pluginsList: jspb.Message.toObjectList(msg.getPluginsList(),
     pulumi_plugin_pb.PluginDependency.toObject, includeInstance)
   };
 
@@ -2294,7 +2301,7 @@ proto.pulumirpc.GetRequiredPackagesRequest.prototype.toObject = function(opt_inc
  */
 proto.pulumirpc.GetRequiredPackagesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    info: (f = msg.getInfo()) && proto.pulumirpc.ProgramInfo.toObject(includeInstance, f)
+info: (f = msg.getInfo()) && proto.pulumirpc.ProgramInfo.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2452,7 +2459,7 @@ proto.pulumirpc.GetRequiredPackagesResponse.prototype.toObject = function(opt_in
  */
 proto.pulumirpc.GetRequiredPackagesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    packagesList: jspb.Message.toObjectList(msg.getPackagesList(),
+packagesList: jspb.Message.toObjectList(msg.getPackagesList(),
     pulumi_plugin_pb.PackageDependency.toObject, includeInstance)
   };
 
@@ -2612,22 +2619,22 @@ proto.pulumirpc.RunRequest.prototype.toObject = function(opt_includeInstance) {
  */
 proto.pulumirpc.RunRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    project: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    stack: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    pwd: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    program: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    argsList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f,
-    configMap: (f = msg.getConfigMap()) ? f.toObject(includeInstance, undefined) : [],
-    dryrun: jspb.Message.getBooleanFieldWithDefault(msg, 7, false),
-    parallel: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    monitorAddress: jspb.Message.getFieldWithDefault(msg, 9, ""),
-    querymode: jspb.Message.getBooleanFieldWithDefault(msg, 10, false),
-    configsecretkeysList: (f = jspb.Message.getRepeatedField(msg, 11)) == null ? undefined : f,
-    organization: jspb.Message.getFieldWithDefault(msg, 12, ""),
-    configpropertymap: (f = msg.getConfigpropertymap()) && google_protobuf_struct_pb.Struct.toObject(includeInstance, f),
-    info: (f = msg.getInfo()) && proto.pulumirpc.ProgramInfo.toObject(includeInstance, f),
-    loaderTarget: jspb.Message.getFieldWithDefault(msg, 15, ""),
-    attachDebugger: jspb.Message.getBooleanFieldWithDefault(msg, 16, false)
+project: jspb.Message.getFieldWithDefault(msg, 1, ""),
+stack: jspb.Message.getFieldWithDefault(msg, 2, ""),
+pwd: jspb.Message.getFieldWithDefault(msg, 3, ""),
+program: jspb.Message.getFieldWithDefault(msg, 4, ""),
+argsList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f,
+configMap: (f = msg.getConfigMap()) ? f.toObject(includeInstance, undefined) : [],
+dryrun: jspb.Message.getBooleanFieldWithDefault(msg, 7, false),
+parallel: jspb.Message.getFieldWithDefault(msg, 8, 0),
+monitorAddress: jspb.Message.getFieldWithDefault(msg, 9, ""),
+querymode: jspb.Message.getBooleanFieldWithDefault(msg, 10, false),
+configsecretkeysList: (f = jspb.Message.getRepeatedField(msg, 11)) == null ? undefined : f,
+organization: jspb.Message.getFieldWithDefault(msg, 12, ""),
+configpropertymap: (f = msg.getConfigpropertymap()) && google_protobuf_struct_pb.Struct.toObject(includeInstance, f),
+info: (f = msg.getInfo()) && proto.pulumirpc.ProgramInfo.toObject(includeInstance, f),
+loaderTarget: jspb.Message.getFieldWithDefault(msg, 15, ""),
+attachDebugger: jspb.Message.getBooleanFieldWithDefault(msg, 16, false)
   };
 
   if (includeInstance) {
@@ -3003,7 +3010,8 @@ proto.pulumirpc.RunRequest.prototype.getConfigMap = function(opt_noLazyCreate) {
  */
 proto.pulumirpc.RunRequest.prototype.clearConfigMap = function() {
   this.getConfigMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -3275,8 +3283,8 @@ proto.pulumirpc.RunResponse.prototype.toObject = function(opt_includeInstance) {
  */
 proto.pulumirpc.RunResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    error: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    bail: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
+error: jspb.Message.getFieldWithDefault(msg, 1, ""),
+bail: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
   };
 
   if (includeInstance) {
@@ -3435,10 +3443,10 @@ proto.pulumirpc.InstallDependenciesRequest.prototype.toObject = function(opt_inc
  */
 proto.pulumirpc.InstallDependenciesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    directory: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    isTerminal: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    info: (f = msg.getInfo()) && proto.pulumirpc.ProgramInfo.toObject(includeInstance, f),
-    useLanguageVersionTools: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+directory: jspb.Message.getFieldWithDefault(msg, 1, ""),
+isTerminal: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+info: (f = msg.getInfo()) && proto.pulumirpc.ProgramInfo.toObject(includeInstance, f),
+useLanguageVersionTools: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -3676,8 +3684,8 @@ proto.pulumirpc.InstallDependenciesResponse.prototype.toObject = function(opt_in
  */
 proto.pulumirpc.InstallDependenciesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    stdout: msg.getStdout_asB64(),
-    stderr: msg.getStderr_asB64()
+stdout: msg.getStdout_asB64(),
+stderr: msg.getStderr_asB64()
   };
 
   if (includeInstance) {
@@ -3884,7 +3892,7 @@ proto.pulumirpc.RuntimeOptionsRequest.prototype.toObject = function(opt_includeI
  */
 proto.pulumirpc.RuntimeOptionsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    info: (f = msg.getInfo()) && proto.pulumirpc.ProgramInfo.toObject(includeInstance, f)
+info: (f = msg.getInfo()) && proto.pulumirpc.ProgramInfo.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4042,12 +4050,12 @@ proto.pulumirpc.RuntimeOptionPrompt.prototype.toObject = function(opt_includeIns
  */
 proto.pulumirpc.RuntimeOptionPrompt.toObject = function(includeInstance, msg) {
   var f, obj = {
-    key: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    prompttype: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    choicesList: jspb.Message.toObjectList(msg.getChoicesList(),
+key: jspb.Message.getFieldWithDefault(msg, 1, ""),
+description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+prompttype: jspb.Message.getFieldWithDefault(msg, 3, 0),
+choicesList: jspb.Message.toObjectList(msg.getChoicesList(),
     proto.pulumirpc.RuntimeOptionPrompt.RuntimeOptionValue.toObject, includeInstance),
-    pb_default: (f = msg.getDefault()) && proto.pulumirpc.RuntimeOptionPrompt.RuntimeOptionValue.toObject(includeInstance, f)
+pb_default: (f = msg.getDefault()) && proto.pulumirpc.RuntimeOptionPrompt.RuntimeOptionValue.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4215,10 +4223,10 @@ proto.pulumirpc.RuntimeOptionPrompt.RuntimeOptionValue.prototype.toObject = func
  */
 proto.pulumirpc.RuntimeOptionPrompt.RuntimeOptionValue.toObject = function(includeInstance, msg) {
   var f, obj = {
-    prompttype: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    stringvalue: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    int32value: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    displayname: jspb.Message.getFieldWithDefault(msg, 4, "")
+prompttype: jspb.Message.getFieldWithDefault(msg, 1, 0),
+stringvalue: jspb.Message.getFieldWithDefault(msg, 2, ""),
+int32value: jspb.Message.getFieldWithDefault(msg, 3, 0),
+displayname: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -4571,7 +4579,7 @@ proto.pulumirpc.RuntimeOptionsResponse.prototype.toObject = function(opt_include
  */
 proto.pulumirpc.RuntimeOptionsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    promptsList: jspb.Message.toObjectList(msg.getPromptsList(),
+promptsList: jspb.Message.toObjectList(msg.getPromptsList(),
     proto.pulumirpc.RuntimeOptionPrompt.toObject, includeInstance)
   };
 
@@ -4731,11 +4739,11 @@ proto.pulumirpc.RunPluginRequest.prototype.toObject = function(opt_includeInstan
  */
 proto.pulumirpc.RunPluginRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    pwd: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    program: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    argsList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
-    envList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f,
-    info: (f = msg.getInfo()) && proto.pulumirpc.ProgramInfo.toObject(includeInstance, f)
+pwd: jspb.Message.getFieldWithDefault(msg, 1, ""),
+program: jspb.Message.getFieldWithDefault(msg, 2, ""),
+argsList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
+envList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f,
+info: (f = msg.getInfo()) && proto.pulumirpc.ProgramInfo.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -5067,9 +5075,9 @@ proto.pulumirpc.RunPluginResponse.prototype.toObject = function(opt_includeInsta
  */
 proto.pulumirpc.RunPluginResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    stdout: msg.getStdout_asB64(),
-    stderr: msg.getStderr_asB64(),
-    exitcode: jspb.Message.getFieldWithDefault(msg, 3, 0)
+stdout: msg.getStdout_asB64(),
+stderr: msg.getStderr_asB64(),
+exitcode: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -5359,9 +5367,9 @@ proto.pulumirpc.GenerateProgramRequest.prototype.toObject = function(opt_include
  */
 proto.pulumirpc.GenerateProgramRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sourceMap: (f = msg.getSourceMap()) ? f.toObject(includeInstance, undefined) : [],
-    loaderTarget: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    strict: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+sourceMap: (f = msg.getSourceMap()) ? f.toObject(includeInstance, undefined) : [],
+loaderTarget: jspb.Message.getFieldWithDefault(msg, 2, ""),
+strict: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -5481,7 +5489,8 @@ proto.pulumirpc.GenerateProgramRequest.prototype.getSourceMap = function(opt_noL
  */
 proto.pulumirpc.GenerateProgramRequest.prototype.clearSourceMap = function() {
   this.getSourceMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -5559,9 +5568,9 @@ proto.pulumirpc.GenerateProgramResponse.prototype.toObject = function(opt_includ
  */
 proto.pulumirpc.GenerateProgramResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    diagnosticsList: jspb.Message.toObjectList(msg.getDiagnosticsList(),
+diagnosticsList: jspb.Message.toObjectList(msg.getDiagnosticsList(),
     pulumi_codegen_hcl_pb.Diagnostic.toObject, includeInstance),
-    sourceMap: (f = msg.getSourceMap()) ? f.toObject(includeInstance, undefined) : []
+sourceMap: (f = msg.getSourceMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -5710,7 +5719,8 @@ proto.pulumirpc.GenerateProgramResponse.prototype.getSourceMap = function(opt_no
  */
 proto.pulumirpc.GenerateProgramResponse.prototype.clearSourceMap = function() {
   this.getSourceMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -5745,12 +5755,12 @@ proto.pulumirpc.GenerateProjectRequest.prototype.toObject = function(opt_include
  */
 proto.pulumirpc.GenerateProjectRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sourceDirectory: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    targetDirectory: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    project: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    strict: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-    loaderTarget: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    localDependenciesMap: (f = msg.getLocalDependenciesMap()) ? f.toObject(includeInstance, undefined) : []
+sourceDirectory: jspb.Message.getFieldWithDefault(msg, 1, ""),
+targetDirectory: jspb.Message.getFieldWithDefault(msg, 2, ""),
+project: jspb.Message.getFieldWithDefault(msg, 3, ""),
+strict: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+loaderTarget: jspb.Message.getFieldWithDefault(msg, 5, ""),
+localDependenciesMap: (f = msg.getLocalDependenciesMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -5993,7 +6003,8 @@ proto.pulumirpc.GenerateProjectRequest.prototype.getLocalDependenciesMap = funct
  */
 proto.pulumirpc.GenerateProjectRequest.prototype.clearLocalDependenciesMap = function() {
   this.getLocalDependenciesMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -6035,7 +6046,7 @@ proto.pulumirpc.GenerateProjectResponse.prototype.toObject = function(opt_includ
  */
 proto.pulumirpc.GenerateProjectResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    diagnosticsList: jspb.Message.toObjectList(msg.getDiagnosticsList(),
+diagnosticsList: jspb.Message.toObjectList(msg.getDiagnosticsList(),
     pulumi_codegen_hcl_pb.Diagnostic.toObject, includeInstance)
   };
 
@@ -6188,12 +6199,12 @@ proto.pulumirpc.GeneratePackageRequest.prototype.toObject = function(opt_include
  */
 proto.pulumirpc.GeneratePackageRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    directory: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    schema: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    extraFilesMap: (f = msg.getExtraFilesMap()) ? f.toObject(includeInstance, undefined) : [],
-    loaderTarget: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    localDependenciesMap: (f = msg.getLocalDependenciesMap()) ? f.toObject(includeInstance, undefined) : [],
-    local: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
+directory: jspb.Message.getFieldWithDefault(msg, 1, ""),
+schema: jspb.Message.getFieldWithDefault(msg, 2, ""),
+extraFilesMap: (f = msg.getExtraFilesMap()) ? f.toObject(includeInstance, undefined) : [],
+loaderTarget: jspb.Message.getFieldWithDefault(msg, 4, ""),
+localDependenciesMap: (f = msg.getLocalDependenciesMap()) ? f.toObject(includeInstance, undefined) : [],
+local: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
   };
 
   if (includeInstance) {
@@ -6381,7 +6392,8 @@ proto.pulumirpc.GeneratePackageRequest.prototype.getExtraFilesMap = function(opt
  */
 proto.pulumirpc.GeneratePackageRequest.prototype.clearExtraFilesMap = function() {
   this.getExtraFilesMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -6421,7 +6433,8 @@ proto.pulumirpc.GeneratePackageRequest.prototype.getLocalDependenciesMap = funct
  */
 proto.pulumirpc.GeneratePackageRequest.prototype.clearLocalDependenciesMap = function() {
   this.getLocalDependenciesMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -6481,7 +6494,7 @@ proto.pulumirpc.GeneratePackageResponse.prototype.toObject = function(opt_includ
  */
 proto.pulumirpc.GeneratePackageResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    diagnosticsList: jspb.Message.toObjectList(msg.getDiagnosticsList(),
+diagnosticsList: jspb.Message.toObjectList(msg.getDiagnosticsList(),
     pulumi_codegen_hcl_pb.Diagnostic.toObject, includeInstance)
   };
 
@@ -6634,8 +6647,8 @@ proto.pulumirpc.PackRequest.prototype.toObject = function(opt_includeInstance) {
  */
 proto.pulumirpc.PackRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    packageDirectory: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    destinationDirectory: jspb.Message.getFieldWithDefault(msg, 2, "")
+packageDirectory: jspb.Message.getFieldWithDefault(msg, 1, ""),
+destinationDirectory: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -6794,7 +6807,7 @@ proto.pulumirpc.PackResponse.prototype.toObject = function(opt_includeInstance) 
  */
 proto.pulumirpc.PackResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    artifactPath: jspb.Message.getFieldWithDefault(msg, 1, "")
+artifactPath: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -6924,9 +6937,9 @@ proto.pulumirpc.LanguageHandshakeRequest.prototype.toObject = function(opt_inclu
  */
 proto.pulumirpc.LanguageHandshakeRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    engineAddress: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    rootDirectory: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    programDirectory: jspb.Message.getFieldWithDefault(msg, 3, "")
+engineAddress: jspb.Message.getFieldWithDefault(msg, 1, ""),
+rootDirectory: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f,
+programDirectory: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f
   };
 
   if (includeInstance) {

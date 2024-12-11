@@ -15,6 +15,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
+
 import builtins
 import collections.abc
 import google.protobuf.descriptor
@@ -32,7 +33,7 @@ else:
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
-@typing_extensions.final
+@typing.final
 class ProviderHandshakeRequest(google.protobuf.message.Message):
     """`ProviderHandshakeRequest` is the type of requests sent as part of a [](pulumirpc.ResourceProvider.Handshake) call."""
 
@@ -63,16 +64,16 @@ class ProviderHandshakeRequest(google.protobuf.message.Message):
         root_directory: builtins.str | None = ...,
         program_directory: builtins.str | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["_program_directory", b"_program_directory", "_root_directory", b"_root_directory", "program_directory", b"program_directory", "root_directory", b"root_directory"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["_program_directory", b"_program_directory", "_root_directory", b"_root_directory", "engine_address", b"engine_address", "program_directory", b"program_directory", "root_directory", b"root_directory"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_program_directory", b"_program_directory", "_root_directory", b"_root_directory", "program_directory", b"program_directory", "root_directory", b"root_directory"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_program_directory", b"_program_directory", "_root_directory", b"_root_directory", "engine_address", b"engine_address", "program_directory", b"program_directory", "root_directory", b"root_directory"]) -> None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal["_program_directory", b"_program_directory"]) -> typing_extensions.Literal["program_directory"] | None: ...
+    def WhichOneof(self, oneof_group: typing.Literal["_program_directory", b"_program_directory"]) -> typing.Literal["program_directory"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal["_root_directory", b"_root_directory"]) -> typing_extensions.Literal["root_directory"] | None: ...
+    def WhichOneof(self, oneof_group: typing.Literal["_root_directory", b"_root_directory"]) -> typing.Literal["root_directory"] | None: ...
 
 global___ProviderHandshakeRequest = ProviderHandshakeRequest
 
-@typing_extensions.final
+@typing.final
 class ProviderHandshakeResponse(google.protobuf.message.Message):
     """`ProviderHandshakeResponse` is the type of responses sent by a [](pulumirpc.ResourceProvider.Handshake) call."""
 
@@ -84,7 +85,7 @@ class ProviderHandshakeResponse(google.protobuf.message.Message):
 
 global___ProviderHandshakeResponse = ProviderHandshakeResponse
 
-@typing_extensions.final
+@typing.final
 class ParameterizeRequest(google.protobuf.message.Message):
     """`ParameterizeRequest` is the type of requests sent as part of a [](pulumirpc.ResourceProvider.Parameterize) call. A
     `ParameterizeRequest` may contain either:
@@ -102,7 +103,7 @@ class ParameterizeRequest(google.protobuf.message.Message):
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
-    @typing_extensions.final
+    @typing.final
     class ParametersArgs(google.protobuf.message.Message):
         """A parameter value, represented as an array of strings, as might be provided by a command-line invocation, such as
         that used to generate an SDK.
@@ -118,9 +119,9 @@ class ParameterizeRequest(google.protobuf.message.Message):
             *,
             args: collections.abc.Iterable[builtins.str] | None = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal["args", b"args"]) -> None: ...
+        def ClearField(self, field_name: typing.Literal["args", b"args"]) -> None: ...
 
-    @typing_extensions.final
+    @typing.final
     class ParametersValue(google.protobuf.message.Message):
         """A parameter value, represented by an arbitrary array of bytes accompanied by a name and version. This is expected
         to be the format used by parameterized provider SDKs.
@@ -144,29 +145,31 @@ class ParameterizeRequest(google.protobuf.message.Message):
             version: builtins.str = ...,
             value: builtins.bytes = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal["name", b"name", "value", b"value", "version", b"version"]) -> None: ...
+        def ClearField(self, field_name: typing.Literal["name", b"name", "value", b"value", "version", b"version"]) -> None: ...
 
     ARGS_FIELD_NUMBER: builtins.int
     VALUE_FIELD_NUMBER: builtins.int
     @property
     def args(self) -> global___ParameterizeRequest.ParametersArgs:
         """Arguments from the command line."""
+
     @property
     def value(self) -> global___ParameterizeRequest.ParametersValue:
         """Values from a generated SDK."""
+
     def __init__(
         self,
         *,
         args: global___ParameterizeRequest.ParametersArgs | None = ...,
         value: global___ParameterizeRequest.ParametersValue | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["args", b"args", "parameters", b"parameters", "value", b"value"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["args", b"args", "parameters", b"parameters", "value", b"value"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing_extensions.Literal["parameters", b"parameters"]) -> typing_extensions.Literal["args", "value"] | None: ...
+    def HasField(self, field_name: typing.Literal["args", b"args", "parameters", b"parameters", "value", b"value"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["args", b"args", "parameters", b"parameters", "value", b"value"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing.Literal["parameters", b"parameters"]) -> typing.Literal["args", "value"] | None: ...
 
 global___ParameterizeRequest = ParameterizeRequest
 
-@typing_extensions.final
+@typing.final
 class ParameterizeResponse(google.protobuf.message.Message):
     """`ParameterizeResponse` is the type of responses sent by a [](pulumirpc.ResourceProvider.Parameterize) call. It
     contains a name and version that can be used to identify the sub-package that now exists as a result of
@@ -187,11 +190,11 @@ class ParameterizeResponse(google.protobuf.message.Message):
         name: builtins.str = ...,
         version: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["name", b"name", "version", b"version"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["name", b"name", "version", b"version"]) -> None: ...
 
 global___ParameterizeResponse = ParameterizeResponse
 
-@typing_extensions.final
+@typing.final
 class GetSchemaRequest(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -211,11 +214,11 @@ class GetSchemaRequest(google.protobuf.message.Message):
         subpackage_name: builtins.str = ...,
         subpackage_version: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["subpackage_name", b"subpackage_name", "subpackage_version", b"subpackage_version", "version", b"version"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["subpackage_name", b"subpackage_name", "subpackage_version", b"subpackage_version", "version", b"version"]) -> None: ...
 
 global___GetSchemaRequest = GetSchemaRequest
 
-@typing_extensions.final
+@typing.final
 class GetSchemaResponse(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -227,11 +230,11 @@ class GetSchemaResponse(google.protobuf.message.Message):
         *,
         schema: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["schema", b"schema"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["schema", b"schema"]) -> None: ...
 
 global___GetSchemaResponse = GetSchemaResponse
 
-@typing_extensions.final
+@typing.final
 class ConfigureRequest(google.protobuf.message.Message):
     """`ConfigureRequest` is the type of requests sent as part of a [](pulumirpc.ResourceProvider.Configure) call. Requests
     include both provider-specific inputs (`variables` or `args`) and provider-agnostic ("protocol") configuration
@@ -240,7 +243,7 @@ class ConfigureRequest(google.protobuf.message.Message):
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
-    @typing_extensions.final
+    @typing.final
     class VariablesEntry(google.protobuf.message.Message):
         DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -254,7 +257,7 @@ class ConfigureRequest(google.protobuf.message.Message):
             key: builtins.str = ...,
             value: builtins.str = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+        def ClearField(self, field_name: typing.Literal["key", b"key", "value", b"value"]) -> None: ...
 
     VARIABLES_FIELD_NUMBER: builtins.int
     ARGS_FIELD_NUMBER: builtins.int
@@ -262,6 +265,26 @@ class ConfigureRequest(google.protobuf.message.Message):
     ACCEPTRESOURCES_FIELD_NUMBER: builtins.int
     SENDS_OLD_INPUTS_FIELD_NUMBER: builtins.int
     SENDS_OLD_INPUTS_TO_DELETE_FIELD_NUMBER: builtins.int
+    acceptSecrets: builtins.bool
+    """True if and only if the caller supports secrets. If true, operations should return strongly typed secrets if the
+    provider supports them also. *Must* be true if the caller has previously called
+    [](pulumirpc.ResourceProvider.Handshake).
+    """
+    acceptResources: builtins.bool
+    """True if and only if the caller supports strongly typed resources. If true, operations should return resources as
+    strongly typed values if the provider supports them also. *Must* be true if the caller has previously called
+    [](pulumirpc.ResourceProvider.Handshake).
+    """
+    sends_old_inputs: builtins.bool
+    """True if and only if the caller supports sending old inputs as part of [](pulumirpc.ResourceProvider.Diff) and
+    [](pulumirpc.ResourceProvider.Update) calls. If true, the provider should expect these fields to be populated in
+    these calls. *Must* be true if the caller has previously called [](pulumirpc.ResourceProvider.Handshake).
+    """
+    sends_old_inputs_to_delete: builtins.bool
+    """True if and only if the caller supports sending old inputs and outputs as part of
+    [](pulumirpc.ResourceProvider.Delete) calls. If true, the provider should expect these fields to be populated in
+    these calls. *Must* be true if the caller has previously called [](pulumirpc.ResourceProvider.Handshake).
+    """
     @property
     def variables(self) -> google.protobuf.internal.containers.ScalarMap[builtins.str, builtins.str]:
         """:::{warning}
@@ -290,6 +313,7 @@ class ConfigureRequest(google.protobuf.message.Message):
         }
         ```
         """
+
     @property
     def args(self) -> google.protobuf.struct_pb2.Struct:
         """A map of input properties for the provider.
@@ -299,26 +323,7 @@ class ConfigureRequest(google.protobuf.message.Message):
         whether or not the provider accepts secrets in general, providers *must* handle secrets if they appear in `args`.
         :::
         """
-    acceptSecrets: builtins.bool
-    """True if and only if the caller supports secrets. If true, operations should return strongly typed secrets if the
-    provider supports them also. *Must* be true if the caller has previously called
-    [](pulumirpc.ResourceProvider.Handshake).
-    """
-    acceptResources: builtins.bool
-    """True if and only if the caller supports strongly typed resources. If true, operations should return resources as
-    strongly typed values if the provider supports them also. *Must* be true if the caller has previously called
-    [](pulumirpc.ResourceProvider.Handshake).
-    """
-    sends_old_inputs: builtins.bool
-    """True if and only if the caller supports sending old inputs as part of [](pulumirpc.ResourceProvider.Diff) and
-    [](pulumirpc.ResourceProvider.Update) calls. If true, the provider should expect these fields to be populated in
-    these calls. *Must* be true if the caller has previously called [](pulumirpc.ResourceProvider.Handshake).
-    """
-    sends_old_inputs_to_delete: builtins.bool
-    """True if and only if the caller supports sending old inputs and outputs as part of
-    [](pulumirpc.ResourceProvider.Delete) calls. If true, the provider should expect these fields to be populated in
-    these calls. *Must* be true if the caller has previously called [](pulumirpc.ResourceProvider.Handshake).
-    """
+
     def __init__(
         self,
         *,
@@ -329,12 +334,12 @@ class ConfigureRequest(google.protobuf.message.Message):
         sends_old_inputs: builtins.bool = ...,
         sends_old_inputs_to_delete: builtins.bool = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["args", b"args"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["acceptResources", b"acceptResources", "acceptSecrets", b"acceptSecrets", "args", b"args", "sends_old_inputs", b"sends_old_inputs", "sends_old_inputs_to_delete", b"sends_old_inputs_to_delete", "variables", b"variables"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["args", b"args"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["acceptResources", b"acceptResources", "acceptSecrets", b"acceptSecrets", "args", b"args", "sends_old_inputs", b"sends_old_inputs", "sends_old_inputs_to_delete", b"sends_old_inputs_to_delete", "variables", b"variables"]) -> None: ...
 
 global___ConfigureRequest = ConfigureRequest
 
-@typing_extensions.final
+@typing.final
 class ConfigureResponse(google.protobuf.message.Message):
     """`ConfigureResponse` is the type of responses sent by a [](pulumirpc.ResourceProvider.Configure) call. Its primary
     purpose is to communicate features that the provider supports back to the caller.
@@ -377,11 +382,11 @@ class ConfigureResponse(google.protobuf.message.Message):
         acceptOutputs: builtins.bool = ...,
         supports_autonaming_configuration: builtins.bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["acceptOutputs", b"acceptOutputs", "acceptResources", b"acceptResources", "acceptSecrets", b"acceptSecrets", "supportsPreview", b"supportsPreview", "supports_autonaming_configuration", b"supports_autonaming_configuration"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["acceptOutputs", b"acceptOutputs", "acceptResources", b"acceptResources", "acceptSecrets", b"acceptSecrets", "supportsPreview", b"supportsPreview", "supports_autonaming_configuration", b"supports_autonaming_configuration"]) -> None: ...
 
 global___ConfigureResponse = ConfigureResponse
 
-@typing_extensions.final
+@typing.final
 class ConfigureErrorMissingKeys(google.protobuf.message.Message):
     """`ConfigureErrorMissingKeys` is the type of error details that may be sent in response to a
     [](pulumirpc.ResourceProvider.Configure) call when required configuration keys are missing.
@@ -389,7 +394,7 @@ class ConfigureErrorMissingKeys(google.protobuf.message.Message):
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
-    @typing_extensions.final
+    @typing.final
     class MissingKey(google.protobuf.message.Message):
         """The type of key-value pairs representing keys that are missing from a [](pulumirpc.ResourceProvider.Configure)
         call.
@@ -415,22 +420,23 @@ class ConfigureErrorMissingKeys(google.protobuf.message.Message):
             name: builtins.str = ...,
             description: builtins.str = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal["description", b"description", "name", b"name"]) -> None: ...
+        def ClearField(self, field_name: typing.Literal["description", b"description", "name", b"name"]) -> None: ...
 
     MISSINGKEYS_FIELD_NUMBER: builtins.int
     @property
     def missingKeys(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___ConfigureErrorMissingKeys.MissingKey]:
         """A list of required configuration keys that were not supplied."""
+
     def __init__(
         self,
         *,
         missingKeys: collections.abc.Iterable[global___ConfigureErrorMissingKeys.MissingKey] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["missingKeys", b"missingKeys"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["missingKeys", b"missingKeys"]) -> None: ...
 
 global___ConfigureErrorMissingKeys = ConfigureErrorMissingKeys
 
-@typing_extensions.final
+@typing.final
 class InvokeRequest(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -441,18 +447,19 @@ class InvokeRequest(google.protobuf.message.Message):
     @property
     def args(self) -> google.protobuf.struct_pb2.Struct:
         """the arguments for the function invocation."""
+
     def __init__(
         self,
         *,
         tok: builtins.str = ...,
         args: google.protobuf.struct_pb2.Struct | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["args", b"args"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["args", b"args", "tok", b"tok"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["args", b"args"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["args", b"args", "tok", b"tok"]) -> None: ...
 
 global___InvokeRequest = InvokeRequest
 
-@typing_extensions.final
+@typing.final
 class InvokeResponse(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -461,21 +468,22 @@ class InvokeResponse(google.protobuf.message.Message):
     @property
     def failures(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___CheckFailure]:
         """the failures if any arguments didn't pass verification."""
+
     def __init__(
         self,
         *,
         failures: collections.abc.Iterable[global___CheckFailure] | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["return", b"return"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["failures", b"failures", "return", b"return"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["return", b"return"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["failures", b"failures", "return", b"return"]) -> None: ...
 
 global___InvokeResponse = InvokeResponse
 
-@typing_extensions.final
+@typing.final
 class CallRequest(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
-    @typing_extensions.final
+    @typing.final
     class ArgumentDependencies(google.protobuf.message.Message):
         """ArgumentDependencies describes the resources that a particular argument depends on."""
 
@@ -485,14 +493,15 @@ class CallRequest(google.protobuf.message.Message):
         @property
         def urns(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
             """A list of URNs this argument depends on."""
+
         def __init__(
             self,
             *,
             urns: collections.abc.Iterable[builtins.str] | None = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal["urns", b"urns"]) -> None: ...
+        def ClearField(self, field_name: typing.Literal["urns", b"urns"]) -> None: ...
 
-    @typing_extensions.final
+    @typing.final
     class ArgDependenciesEntry(google.protobuf.message.Message):
         DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -507,10 +516,10 @@ class CallRequest(google.protobuf.message.Message):
             key: builtins.str = ...,
             value: global___CallRequest.ArgumentDependencies | None = ...,
         ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> builtins.bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+        def HasField(self, field_name: typing.Literal["value", b"value"]) -> builtins.bool: ...
+        def ClearField(self, field_name: typing.Literal["key", b"key", "value", b"value"]) -> None: ...
 
-    @typing_extensions.final
+    @typing.final
     class ConfigEntry(google.protobuf.message.Message):
         DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -524,7 +533,7 @@ class CallRequest(google.protobuf.message.Message):
             key: builtins.str = ...,
             value: builtins.str = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+        def ClearField(self, field_name: typing.Literal["key", b"key", "value", b"value"]) -> None: ...
 
     TOK_FIELD_NUMBER: builtins.int
     ARGS_FIELD_NUMBER: builtins.int
@@ -540,22 +549,10 @@ class CallRequest(google.protobuf.message.Message):
     ACCEPTS_OUTPUT_VALUES_FIELD_NUMBER: builtins.int
     tok: builtins.str
     """the function token to invoke."""
-    @property
-    def args(self) -> google.protobuf.struct_pb2.Struct:
-        """the arguments for the function invocation."""
-    @property
-    def argDependencies(self) -> google.protobuf.internal.containers.MessageMap[builtins.str, global___CallRequest.ArgumentDependencies]:
-        """a map from argument keys to the dependencies of the argument."""
     project: builtins.str
     """the project name."""
     stack: builtins.str
     """the name of the stack being deployed into."""
-    @property
-    def config(self) -> google.protobuf.internal.containers.ScalarMap[builtins.str, builtins.str]:
-        """the configuration variables to apply before running."""
-    @property
-    def configSecretKeys(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
-        """the configuration keys that have secret values."""
     dryRun: builtins.bool
     """true if we're only doing a dryrun (preview)."""
     parallel: builtins.int
@@ -566,6 +563,22 @@ class CallRequest(google.protobuf.message.Message):
     """the organization of the stack being deployed into."""
     accepts_output_values: builtins.bool
     """the engine can be passed output values back, returnDependencies can be left blank if returning output values."""
+    @property
+    def args(self) -> google.protobuf.struct_pb2.Struct:
+        """the arguments for the function invocation."""
+
+    @property
+    def argDependencies(self) -> google.protobuf.internal.containers.MessageMap[builtins.str, global___CallRequest.ArgumentDependencies]:
+        """a map from argument keys to the dependencies of the argument."""
+
+    @property
+    def config(self) -> google.protobuf.internal.containers.ScalarMap[builtins.str, builtins.str]:
+        """the configuration variables to apply before running."""
+
+    @property
+    def configSecretKeys(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """the configuration keys that have secret values."""
+
     def __init__(
         self,
         *,
@@ -582,16 +595,16 @@ class CallRequest(google.protobuf.message.Message):
         organization: builtins.str = ...,
         accepts_output_values: builtins.bool = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["args", b"args"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["accepts_output_values", b"accepts_output_values", "argDependencies", b"argDependencies", "args", b"args", "config", b"config", "configSecretKeys", b"configSecretKeys", "dryRun", b"dryRun", "monitorEndpoint", b"monitorEndpoint", "organization", b"organization", "parallel", b"parallel", "project", b"project", "stack", b"stack", "tok", b"tok"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["args", b"args"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["accepts_output_values", b"accepts_output_values", "argDependencies", b"argDependencies", "args", b"args", "config", b"config", "configSecretKeys", b"configSecretKeys", "dryRun", b"dryRun", "monitorEndpoint", b"monitorEndpoint", "organization", b"organization", "parallel", b"parallel", "project", b"project", "stack", b"stack", "tok", b"tok"]) -> None: ...
 
 global___CallRequest = CallRequest
 
-@typing_extensions.final
+@typing.final
 class CallResponse(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
-    @typing_extensions.final
+    @typing.final
     class ReturnDependencies(google.protobuf.message.Message):
         """ReturnDependencies describes the resources that a particular return value depends on."""
 
@@ -601,14 +614,15 @@ class CallResponse(google.protobuf.message.Message):
         @property
         def urns(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
             """A list of URNs this return value depends on."""
+
         def __init__(
             self,
             *,
             urns: collections.abc.Iterable[builtins.str] | None = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal["urns", b"urns"]) -> None: ...
+        def ClearField(self, field_name: typing.Literal["urns", b"urns"]) -> None: ...
 
-    @typing_extensions.final
+    @typing.final
     class ReturnDependenciesEntry(google.protobuf.message.Message):
         DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -623,8 +637,8 @@ class CallResponse(google.protobuf.message.Message):
             key: builtins.str = ...,
             value: global___CallResponse.ReturnDependencies | None = ...,
         ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> builtins.bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+        def HasField(self, field_name: typing.Literal["value", b"value"]) -> builtins.bool: ...
+        def ClearField(self, field_name: typing.Literal["key", b"key", "value", b"value"]) -> None: ...
 
     RETURN_FIELD_NUMBER: builtins.int
     FAILURES_FIELD_NUMBER: builtins.int
@@ -632,6 +646,7 @@ class CallResponse(google.protobuf.message.Message):
     @property
     def failures(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___CheckFailure]:
         """the failures if any arguments didn't pass verification."""
+
     @property
     def returnDependencies(self) -> google.protobuf.internal.containers.MessageMap[builtins.str, global___CallResponse.ReturnDependencies]:
         """a map from return value keys to the dependencies of the return value.
@@ -639,18 +654,19 @@ class CallResponse(google.protobuf.message.Message):
         returnDependencies will be augmented by the set of dependencies specified in return
         via output property values.
         """
+
     def __init__(
         self,
         *,
         failures: collections.abc.Iterable[global___CheckFailure] | None = ...,
         returnDependencies: collections.abc.Mapping[builtins.str, global___CallResponse.ReturnDependencies] | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["return", b"return"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["failures", b"failures", "return", b"return", "returnDependencies", b"returnDependencies"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["return", b"return"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["failures", b"failures", "return", b"return", "returnDependencies", b"returnDependencies"]) -> None: ...
 
 global___CallResponse = CallResponse
 
-@typing_extensions.final
+@typing.final
 class CheckRequest(google.protobuf.message.Message):
     """`CheckRequest` is the type of requests sent as part of [](pulumirpc.ResourceProvider.CheckConfig) and
     [](pulumirpc.ResourceProvider.Check) calls. A `CheckRequest` primarily captures the URN and inputs of the resource
@@ -661,7 +677,7 @@ class CheckRequest(google.protobuf.message.Message):
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
-    @typing_extensions.final
+    @typing.final
     class AutonamingOptions(google.protobuf.message.Message):
         """Configuration for automatic resource naming behavior. This structure contains fields that control how the provider
         handles resource names, including proposed names and naming modes.
@@ -673,7 +689,7 @@ class CheckRequest(google.protobuf.message.Message):
             ValueType = typing.NewType("ValueType", builtins.int)
             V: typing_extensions.TypeAlias = ValueType
 
-        class _ModeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[CheckRequest.AutonamingOptions._Mode.ValueType], builtins.type):  # noqa: F821
+        class _ModeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[CheckRequest.AutonamingOptions._Mode.ValueType], builtins.type):
             DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
             PROPOSE: CheckRequest.AutonamingOptions._Mode.ValueType  # 0
             ENFORCE: CheckRequest.AutonamingOptions._Mode.ValueType  # 1
@@ -704,7 +720,7 @@ class CheckRequest(google.protobuf.message.Message):
             proposed_name: builtins.str = ...,
             mode: global___CheckRequest.AutonamingOptions.Mode.ValueType = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal["mode", b"mode", "proposed_name", b"proposed_name"]) -> None: ...
+        def ClearField(self, field_name: typing.Literal["mode", b"mode", "proposed_name", b"proposed_name"]) -> None: ...
 
     URN_FIELD_NUMBER: builtins.int
     OLDS_FIELD_NUMBER: builtins.int
@@ -718,9 +734,20 @@ class CheckRequest(google.protobuf.message.Message):
     [](pulumirpc.ResourceProvider.CheckConfig), this will be the URN of the provider resource being constructed,
     which may or may not be a [default provider](default-providers).
     """
+    randomSeed: builtins.bytes
+    """A random but deterministically computed hash, intended to be used for generating globally unique names."""
+    name: builtins.str
+    """The name of the resource being checked. This must match the name specified by the `urn` field, and is passed so
+    that providers do not have to implement URN parsing in order to extract the name of the resource.
+    """
+    type: builtins.str
+    """The type of the resource being checked. This must match the type specified by the `urn` field, and is passed so
+    that providers do not have to implement URN parsing in order to extract the type of the resource.
+    """
     @property
     def olds(self) -> google.protobuf.struct_pb2.Struct:
         """The old input properties or configuration for the resource, if any."""
+
     @property
     def news(self) -> google.protobuf.struct_pb2.Struct:
         """The new input properties or configuration for the resource, if any.
@@ -733,16 +760,7 @@ class CheckRequest(google.protobuf.message.Message):
         with its corresponding `olds` value (effectively ignoring the change).
         :::
         """
-    randomSeed: builtins.bytes
-    """A random but deterministically computed hash, intended to be used for generating globally unique names."""
-    name: builtins.str
-    """The name of the resource being checked. This must match the name specified by the `urn` field, and is passed so
-    that providers do not have to implement URN parsing in order to extract the name of the resource.
-    """
-    type: builtins.str
-    """The type of the resource being checked. This must match the type specified by the `urn` field, and is passed so
-    that providers do not have to implement URN parsing in order to extract the type of the resource.
-    """
+
     @property
     def autonaming(self) -> global___CheckRequest.AutonamingOptions: ...
     def __init__(
@@ -756,12 +774,12 @@ class CheckRequest(google.protobuf.message.Message):
         type: builtins.str = ...,
         autonaming: global___CheckRequest.AutonamingOptions | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["autonaming", b"autonaming", "news", b"news", "olds", b"olds"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["autonaming", b"autonaming", "name", b"name", "news", b"news", "olds", b"olds", "randomSeed", b"randomSeed", "type", b"type", "urn", b"urn"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["autonaming", b"autonaming", "news", b"news", "olds", b"olds"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["autonaming", b"autonaming", "name", b"name", "news", b"news", "olds", b"olds", "randomSeed", b"randomSeed", "type", b"type", "urn", b"urn"]) -> None: ...
 
 global___CheckRequest = CheckRequest
 
-@typing_extensions.final
+@typing.final
 class CheckResponse(google.protobuf.message.Message):
     """`CheckResponse` is the type of responses sent by a [](pulumirpc.ResourceProvider.CheckConfig) or
     [](pulumirpc.ResourceProvider.Check) call. A `CheckResponse` may contain either:
@@ -783,21 +801,23 @@ class CheckResponse(google.protobuf.message.Message):
     @property
     def inputs(self) -> google.protobuf.struct_pb2.Struct:
         """A valid, checked set of inputs. May contain defaults."""
+
     @property
     def failures(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___CheckFailure]:
         """Any validation failures that occurred."""
+
     def __init__(
         self,
         *,
         inputs: google.protobuf.struct_pb2.Struct | None = ...,
         failures: collections.abc.Iterable[global___CheckFailure] | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["inputs", b"inputs"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["failures", b"failures", "inputs", b"inputs"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["inputs", b"inputs"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["failures", b"failures", "inputs", b"inputs"]) -> None: ...
 
 global___CheckResponse = CheckResponse
 
-@typing_extensions.final
+@typing.final
 class CheckFailure(google.protobuf.message.Message):
     """A `CheckFailure` describes a single validation error that arose as part of a
     [](pulumirpc.ResourceProvider.CheckConfig) or [](pulumirpc.ResourceProvider.Check) call.
@@ -817,11 +837,11 @@ class CheckFailure(google.protobuf.message.Message):
         property: builtins.str = ...,
         reason: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["property", b"property", "reason", b"reason"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["property", b"property", "reason", b"reason"]) -> None: ...
 
 global___CheckFailure = CheckFailure
 
-@typing_extensions.final
+@typing.final
 class DiffRequest(google.protobuf.message.Message):
     """`DiffRequest` is the type of requests sent as part of [](pulumirpc.ResourceProvider.DiffConfig) and
     [](pulumirpc.ResourceProvider.Diff) calls. A `DiffRequest` primarily captures:
@@ -852,20 +872,6 @@ class DiffRequest(google.protobuf.message.Message):
     """The ID of the resource being diffed."""
     urn: builtins.str
     """The URN of the resource being diffed."""
-    @property
-    def olds(self) -> google.protobuf.struct_pb2.Struct:
-        """The old *output* properties of the resource being diffed."""
-    @property
-    def news(self) -> google.protobuf.struct_pb2.Struct:
-        """The new *input* properties of the resource being diffed. These should have been validated by an appropriate call
-        to [](pulumirpc.ResourceProvider.CheckConfig) or [](pulumirpc.ResourceProvider.Check).
-        """
-    @property
-    def ignoreChanges(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
-        """A set of [property paths](property-paths) that should be treated as unchanged."""
-    @property
-    def old_inputs(self) -> google.protobuf.struct_pb2.Struct:
-        """The old *input* properties of the resource being diffed."""
     name: builtins.str
     """The name of the resource being diffed. This must match the name specified by the `urn` field, and is passed so
     that providers do not have to implement URN parsing in order to extract the name of the resource.
@@ -874,6 +880,24 @@ class DiffRequest(google.protobuf.message.Message):
     """The type of the resource being diffed. This must match the type specified by the `urn` field, and is passed so
     that providers do not have to implement URN parsing in order to extract the type of the resource.
     """
+    @property
+    def olds(self) -> google.protobuf.struct_pb2.Struct:
+        """The old *output* properties of the resource being diffed."""
+
+    @property
+    def news(self) -> google.protobuf.struct_pb2.Struct:
+        """The new *input* properties of the resource being diffed. These should have been validated by an appropriate call
+        to [](pulumirpc.ResourceProvider.CheckConfig) or [](pulumirpc.ResourceProvider.Check).
+        """
+
+    @property
+    def ignoreChanges(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """A set of [property paths](property-paths) that should be treated as unchanged."""
+
+    @property
+    def old_inputs(self) -> google.protobuf.struct_pb2.Struct:
+        """The old *input* properties of the resource being diffed."""
+
     def __init__(
         self,
         *,
@@ -886,12 +910,12 @@ class DiffRequest(google.protobuf.message.Message):
         name: builtins.str = ...,
         type: builtins.str = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["news", b"news", "old_inputs", b"old_inputs", "olds", b"olds"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["id", b"id", "ignoreChanges", b"ignoreChanges", "name", b"name", "news", b"news", "old_inputs", b"old_inputs", "olds", b"olds", "type", b"type", "urn", b"urn"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["news", b"news", "old_inputs", b"old_inputs", "olds", b"olds"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["id", b"id", "ignoreChanges", b"ignoreChanges", "name", b"name", "news", b"news", "old_inputs", b"old_inputs", "olds", b"olds", "type", b"type", "urn", b"urn"]) -> None: ...
 
 global___DiffRequest = DiffRequest
 
-@typing_extensions.final
+@typing.final
 class PropertyDiff(google.protobuf.message.Message):
     """`PropertyDiff` describes the kind of change that occurred to a property during a diff operation. A `PropertyDiff` may
     indicate that a property was added, deleted, or updated, and may further indicate that the change requires a
@@ -904,7 +928,7 @@ class PropertyDiff(google.protobuf.message.Message):
         ValueType = typing.NewType("ValueType", builtins.int)
         V: typing_extensions.TypeAlias = ValueType
 
-    class _KindEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[PropertyDiff._Kind.ValueType], builtins.type):  # noqa: F821
+    class _KindEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[PropertyDiff._Kind.ValueType], builtins.type):
         DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
         ADD: PropertyDiff._Kind.ValueType  # 0
         """This property was added."""
@@ -949,11 +973,11 @@ class PropertyDiff(google.protobuf.message.Message):
         kind: global___PropertyDiff.Kind.ValueType = ...,
         inputDiff: builtins.bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["inputDiff", b"inputDiff", "kind", b"kind"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["inputDiff", b"inputDiff", "kind", b"kind"]) -> None: ...
 
 global___PropertyDiff = PropertyDiff
 
-@typing_extensions.final
+@typing.final
 class DiffResponse(google.protobuf.message.Message):
     """`DiffResponse` is the type of responses sent by a [](pulumirpc.ResourceProvider.DiffConfig) or
     [](pulumirpc.ResourceProvider.Diff) call. A `DiffResponse` indicates whether a resource is unchanged, requires
@@ -978,7 +1002,7 @@ class DiffResponse(google.protobuf.message.Message):
         ValueType = typing.NewType("ValueType", builtins.int)
         V: typing_extensions.TypeAlias = ValueType
 
-    class _DiffChangesEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[DiffResponse._DiffChanges.ValueType], builtins.type):  # noqa: F821
+    class _DiffChangesEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[DiffResponse._DiffChanges.ValueType], builtins.type):
         DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
         DIFF_UNKNOWN: DiffResponse._DiffChanges.ValueType  # 0
         """A diff was performed but it is unknown whether there are changes or not. This exists to support legacy
@@ -1001,7 +1025,7 @@ class DiffResponse(google.protobuf.message.Message):
     DIFF_SOME: DiffResponse.DiffChanges.ValueType  # 2
     """A diff was performed, and changes were detected that require an update or replacement."""
 
-    @typing_extensions.final
+    @typing.final
     class DetailedDiffEntry(google.protobuf.message.Message):
         DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -1016,8 +1040,8 @@ class DiffResponse(google.protobuf.message.Message):
             key: builtins.str = ...,
             value: global___PropertyDiff | None = ...,
         ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> builtins.bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+        def HasField(self, field_name: typing.Literal["value", b"value"]) -> builtins.bool: ...
+        def ClearField(self, field_name: typing.Literal["key", b"key", "value", b"value"]) -> None: ...
 
     REPLACES_FIELD_NUMBER: builtins.int
     STABLES_FIELD_NUMBER: builtins.int
@@ -1026,26 +1050,31 @@ class DiffResponse(google.protobuf.message.Message):
     DIFFS_FIELD_NUMBER: builtins.int
     DETAILEDDIFF_FIELD_NUMBER: builtins.int
     HASDETAILEDDIFF_FIELD_NUMBER: builtins.int
-    @property
-    def replaces(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
-        """A set of properties which have changed and whose changes require the resource being diffed to be replaced. The
-        caller should replace the resource if this set is non-empty, or if any of the properties specified in
-        `detailedDiff` have a `*_REPLACE` kind.
-        """
-    @property
-    def stables(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
-        """An optional list of properties that will not ever change (are stable)."""
     deleteBeforeReplace: builtins.bool
     """If true, this resource must be deleted *before* its replacement is created."""
     changes: global___DiffResponse.DiffChanges.ValueType
     """The result of the diff. Indicates at a high level whether the resource has changed or not (or, in legacy cases,
     if the provider does not know).
     """
+    hasDetailedDiff: builtins.bool
+    """True if and only if this response contains a `detailedDiff`."""
+    @property
+    def replaces(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """A set of properties which have changed and whose changes require the resource being diffed to be replaced. The
+        caller should replace the resource if this set is non-empty, or if any of the properties specified in
+        `detailedDiff` have a `*_REPLACE` kind.
+        """
+
+    @property
+    def stables(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """An optional list of properties that will not ever change (are stable)."""
+
     @property
     def diffs(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
         """The set of properties which have changed. This field only supports top-level properties. It *does not* support
         full [property paths](property-paths); implementations should use `detailedDiff` when this is required.
         """
+
     @property
     def detailedDiff(self) -> google.protobuf.internal.containers.MessageMap[builtins.str, global___PropertyDiff]:
         """`detailedDiff` can be used to implement more detailed diffs. A detailed diff is a map from [property
@@ -1053,8 +1082,7 @@ class DiffResponse(google.protobuf.message.Message):
         property located at that path. If a provider does not implement this, the caller (typically the Pulumi engine)
         will compute a representation based on the simple diff fields (`changes`, `replaces`, and so on).
         """
-    hasDetailedDiff: builtins.bool
-    """True if and only if this response contains a `detailedDiff`."""
+
     def __init__(
         self,
         *,
@@ -1066,11 +1094,11 @@ class DiffResponse(google.protobuf.message.Message):
         detailedDiff: collections.abc.Mapping[builtins.str, global___PropertyDiff] | None = ...,
         hasDetailedDiff: builtins.bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["changes", b"changes", "deleteBeforeReplace", b"deleteBeforeReplace", "detailedDiff", b"detailedDiff", "diffs", b"diffs", "hasDetailedDiff", b"hasDetailedDiff", "replaces", b"replaces", "stables", b"stables"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["changes", b"changes", "deleteBeforeReplace", b"deleteBeforeReplace", "detailedDiff", b"detailedDiff", "diffs", b"diffs", "hasDetailedDiff", b"hasDetailedDiff", "replaces", b"replaces", "stables", b"stables"]) -> None: ...
 
 global___DiffResponse = DiffResponse
 
-@typing_extensions.final
+@typing.final
 class CreateRequest(google.protobuf.message.Message):
     """`CreateRequest` is the type of requests sent as part of a [](pulumirpc.ResourceProvider.Create) call."""
 
@@ -1084,11 +1112,6 @@ class CreateRequest(google.protobuf.message.Message):
     TYPE_FIELD_NUMBER: builtins.int
     urn: builtins.str
     """The URN of the resource being created."""
-    @property
-    def properties(self) -> google.protobuf.struct_pb2.Struct:
-        """The resource's input properties, to be set during creation. These should have been validated by a call to
-        [](pulumirpc.ResourceProvider.Check).
-        """
     timeout: builtins.float
     """A timeout in seconds that the caller is prepared to wait for the operation to complete."""
     preview: builtins.bool
@@ -1103,6 +1126,12 @@ class CreateRequest(google.protobuf.message.Message):
     """The type of the resource being created. This must match the type specified by the `urn` field, and is passed so
     that providers do not have to implement URN parsing in order to extract the type of the resource.
     """
+    @property
+    def properties(self) -> google.protobuf.struct_pb2.Struct:
+        """The resource's input properties, to be set during creation. These should have been validated by a call to
+        [](pulumirpc.ResourceProvider.Check).
+        """
+
     def __init__(
         self,
         *,
@@ -1113,12 +1142,12 @@ class CreateRequest(google.protobuf.message.Message):
         name: builtins.str = ...,
         type: builtins.str = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["properties", b"properties"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["name", b"name", "preview", b"preview", "properties", b"properties", "timeout", b"timeout", "type", b"type", "urn", b"urn"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["properties", b"properties"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["name", b"name", "preview", b"preview", "properties", b"properties", "timeout", b"timeout", "type", b"type", "urn", b"urn"]) -> None: ...
 
 global___CreateRequest = CreateRequest
 
-@typing_extensions.final
+@typing.final
 class CreateResponse(google.protobuf.message.Message):
     """`CreateResponse` is the type of responses sent by a [](pulumirpc.ResourceProvider.Create) call. A `CreateResponse`
     contains the ID of the created resource, as well as any output properties that arose from the creation process.
@@ -1135,18 +1164,19 @@ class CreateResponse(google.protobuf.message.Message):
         """The resource's output properties. Typically this will be a union of the resource's input properties and any
         additional values that were computed or made available during creation.
         """
+
     def __init__(
         self,
         *,
         id: builtins.str = ...,
         properties: google.protobuf.struct_pb2.Struct | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["properties", b"properties"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["id", b"id", "properties", b"properties"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["properties", b"properties"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["id", b"id", "properties", b"properties"]) -> None: ...
 
 global___CreateResponse = CreateResponse
 
-@typing_extensions.final
+@typing.final
 class ReadRequest(google.protobuf.message.Message):
     """`ReadRequest` is the type of requests sent as part of a [](pulumirpc.ResourceProvider.Read) call."""
 
@@ -1162,14 +1192,6 @@ class ReadRequest(google.protobuf.message.Message):
     """The ID of the resource to read."""
     urn: builtins.str
     """The URN of the resource being read."""
-    @property
-    def properties(self) -> google.protobuf.struct_pb2.Struct:
-        """Any current state for the resource being read. This state should be sufficient to uniquely identify the resource."""
-    @property
-    def inputs(self) -> google.protobuf.struct_pb2.Struct:
-        """Any current input properties for the resource being read. These will only be populated when the
-        [](pulumirpc.ResourceProvider.Read) call is being made as part of a refresh operation.
-        """
     name: builtins.str
     """The name of the resource being read. This must match the name specified by the `urn` field, and is passed so that
     providers do not have to implement URN parsing in order to extract the name of the resource.
@@ -1178,6 +1200,16 @@ class ReadRequest(google.protobuf.message.Message):
     """The type of the resource being read. This must match the type specified by the `urn` field, and is passed so that
     providers do not have to implement URN parsing in order to extract the type of the resource.
     """
+    @property
+    def properties(self) -> google.protobuf.struct_pb2.Struct:
+        """Any current state for the resource being read. This state should be sufficient to uniquely identify the resource."""
+
+    @property
+    def inputs(self) -> google.protobuf.struct_pb2.Struct:
+        """Any current input properties for the resource being read. These will only be populated when the
+        [](pulumirpc.ResourceProvider.Read) call is being made as part of a refresh operation.
+        """
+
     def __init__(
         self,
         *,
@@ -1188,12 +1220,12 @@ class ReadRequest(google.protobuf.message.Message):
         name: builtins.str = ...,
         type: builtins.str = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["inputs", b"inputs", "properties", b"properties"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["id", b"id", "inputs", b"inputs", "name", b"name", "properties", b"properties", "type", b"type", "urn", b"urn"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["inputs", b"inputs", "properties", b"properties"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["id", b"id", "inputs", b"inputs", "name", b"name", "properties", b"properties", "type", b"type", "urn", b"urn"]) -> None: ...
 
 global___ReadRequest = ReadRequest
 
-@typing_extensions.final
+@typing.final
 class ReadResponse(google.protobuf.message.Message):
     """`ReadResponse` is the type of responses sent by a [](pulumirpc.ResourceProvider.Read) call. A `ReadResponse` contains
     the ID of the resource being read, as well as any state that was successfully read from the live environment.
@@ -1209,11 +1241,13 @@ class ReadResponse(google.protobuf.message.Message):
     @property
     def properties(self) -> google.protobuf.struct_pb2.Struct:
         """The output properties of the resource read from the live environment."""
+
     @property
     def inputs(self) -> google.protobuf.struct_pb2.Struct:
         """Output-derived input properties for the resource. These are returned as they would be returned from a
         [](pulumirpc.ResourceProvider.Check) call with the same values.
         """
+
     def __init__(
         self,
         *,
@@ -1221,12 +1255,12 @@ class ReadResponse(google.protobuf.message.Message):
         properties: google.protobuf.struct_pb2.Struct | None = ...,
         inputs: google.protobuf.struct_pb2.Struct | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["inputs", b"inputs", "properties", b"properties"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["id", b"id", "inputs", b"inputs", "properties", b"properties"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["inputs", b"inputs", "properties", b"properties"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["id", b"id", "inputs", b"inputs", "properties", b"properties"]) -> None: ...
 
 global___ReadResponse = ReadResponse
 
-@typing_extensions.final
+@typing.final
 class UpdateRequest(google.protobuf.message.Message):
     """`UpdateRequest` is the type of requests sent as part of a [](pulumirpc.ResourceProvider.Update) call."""
 
@@ -1246,26 +1280,12 @@ class UpdateRequest(google.protobuf.message.Message):
     """The ID of the resource being updated."""
     urn: builtins.str
     """The URN of the resource being updated."""
-    @property
-    def olds(self) -> google.protobuf.struct_pb2.Struct:
-        """The old *output* properties of the resource being updated."""
-    @property
-    def news(self) -> google.protobuf.struct_pb2.Struct:
-        """The new input properties of the resource being updated. These should have been validated by a call to
-        [](pulumirpc.ResourceProvider.Check).
-        """
     timeout: builtins.float
     """A timeout in seconds that the caller is prepared to wait for the operation to complete."""
-    @property
-    def ignoreChanges(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
-        """A set of [property paths](property-paths) that should be treated as unchanged."""
     preview: builtins.bool
     """True if and only if the request is being made as part of a preview/dry run, in which case the provider should not
     actually update the resource.
     """
-    @property
-    def old_inputs(self) -> google.protobuf.struct_pb2.Struct:
-        """The old *input* properties of the resource being updated."""
     name: builtins.str
     """The name of the resource being updated. This must match the name specified by the `urn` field, and is passed so
     that providers do not have to implement URN parsing in order to extract the name of the resource.
@@ -1274,6 +1294,24 @@ class UpdateRequest(google.protobuf.message.Message):
     """The type of the resource being updated. This must match the type specified by the `urn` field, and is passed so
     that providers do not have to implement URN parsing in order to extract the type of the resource.
     """
+    @property
+    def olds(self) -> google.protobuf.struct_pb2.Struct:
+        """The old *output* properties of the resource being updated."""
+
+    @property
+    def news(self) -> google.protobuf.struct_pb2.Struct:
+        """The new input properties of the resource being updated. These should have been validated by a call to
+        [](pulumirpc.ResourceProvider.Check).
+        """
+
+    @property
+    def ignoreChanges(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """A set of [property paths](property-paths) that should be treated as unchanged."""
+
+    @property
+    def old_inputs(self) -> google.protobuf.struct_pb2.Struct:
+        """The old *input* properties of the resource being updated."""
+
     def __init__(
         self,
         *,
@@ -1288,12 +1326,12 @@ class UpdateRequest(google.protobuf.message.Message):
         name: builtins.str = ...,
         type: builtins.str = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["news", b"news", "old_inputs", b"old_inputs", "olds", b"olds"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["id", b"id", "ignoreChanges", b"ignoreChanges", "name", b"name", "news", b"news", "old_inputs", b"old_inputs", "olds", b"olds", "preview", b"preview", "timeout", b"timeout", "type", b"type", "urn", b"urn"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["news", b"news", "old_inputs", b"old_inputs", "olds", b"olds"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["id", b"id", "ignoreChanges", b"ignoreChanges", "name", b"name", "news", b"news", "old_inputs", b"old_inputs", "olds", b"olds", "preview", b"preview", "timeout", b"timeout", "type", b"type", "urn", b"urn"]) -> None: ...
 
 global___UpdateRequest = UpdateRequest
 
-@typing_extensions.final
+@typing.final
 class UpdateResponse(google.protobuf.message.Message):
     """`UpdateResponse` is the type of responses sent by a [](pulumirpc.ResourceProvider.Update) call."""
 
@@ -1305,17 +1343,18 @@ class UpdateResponse(google.protobuf.message.Message):
         """An updated set of resource output properties. Typically this will be a union of the resource's inputs and any
         additional values that were computed or made available during the update.
         """
+
     def __init__(
         self,
         *,
         properties: google.protobuf.struct_pb2.Struct | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["properties", b"properties"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["properties", b"properties"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["properties", b"properties"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["properties", b"properties"]) -> None: ...
 
 global___UpdateResponse = UpdateResponse
 
-@typing_extensions.final
+@typing.final
 class DeleteRequest(google.protobuf.message.Message):
     """`DeleteRequest` is the type of requests sent as part of a [](pulumirpc.ResourceProvider.Delete) call."""
 
@@ -1332,16 +1371,8 @@ class DeleteRequest(google.protobuf.message.Message):
     """The ID of the resource to delete."""
     urn: builtins.str
     """The URN of the resource to delete."""
-    @property
-    def properties(self) -> google.protobuf.struct_pb2.Struct:
-        """The old *output* properties of the resource being deleted."""
     timeout: builtins.float
     """A timeout in seconds that the caller is prepared to wait for the operation to complete."""
-    @property
-    def old_inputs(self) -> google.protobuf.struct_pb2.Struct:
-        """The old *input* properties of the resource being deleted.
-        the old input values of the resource to delete.
-        """
     name: builtins.str
     """The name of the resource being deleted. This must match the name specified by the `urn` field, and is passed so
     that providers do not have to implement URN parsing in order to extract the name of the resource.
@@ -1350,6 +1381,16 @@ class DeleteRequest(google.protobuf.message.Message):
     """The type of the resource being deleted. This must match the type specified by the `urn` field, and is passed so
     that providers do not have to implement URN parsing in order to extract the type of the resource.
     """
+    @property
+    def properties(self) -> google.protobuf.struct_pb2.Struct:
+        """The old *output* properties of the resource being deleted."""
+
+    @property
+    def old_inputs(self) -> google.protobuf.struct_pb2.Struct:
+        """The old *input* properties of the resource being deleted.
+        the old input values of the resource to delete.
+        """
+
     def __init__(
         self,
         *,
@@ -1361,12 +1402,12 @@ class DeleteRequest(google.protobuf.message.Message):
         name: builtins.str = ...,
         type: builtins.str = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["old_inputs", b"old_inputs", "properties", b"properties"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["id", b"id", "name", b"name", "old_inputs", b"old_inputs", "properties", b"properties", "timeout", b"timeout", "type", b"type", "urn", b"urn"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["old_inputs", b"old_inputs", "properties", b"properties"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["id", b"id", "name", b"name", "old_inputs", b"old_inputs", "properties", b"properties", "timeout", b"timeout", "type", b"type", "urn", b"urn"]) -> None: ...
 
 global___DeleteRequest = DeleteRequest
 
-@typing_extensions.final
+@typing.final
 class ConstructRequest(google.protobuf.message.Message):
     """`ConstructRequest` is the type of requests sent as part of a [](pulumirpc.ResourceProvider.Construct) call. A
     `ConstructRequest` captures enough data to be able to register nested components against the caller's resource
@@ -1375,7 +1416,7 @@ class ConstructRequest(google.protobuf.message.Message):
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
-    @typing_extensions.final
+    @typing.final
     class PropertyDependencies(google.protobuf.message.Message):
         """A `PropertyDependencies` list is a set of URNs that a particular property may depend on."""
 
@@ -1385,14 +1426,15 @@ class ConstructRequest(google.protobuf.message.Message):
         @property
         def urns(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
             """A list of URNs that this property depends on."""
+
         def __init__(
             self,
             *,
             urns: collections.abc.Iterable[builtins.str] | None = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal["urns", b"urns"]) -> None: ...
+        def ClearField(self, field_name: typing.Literal["urns", b"urns"]) -> None: ...
 
-    @typing_extensions.final
+    @typing.final
     class CustomTimeouts(google.protobuf.message.Message):
         """A `CustomTimeouts` object encapsulates a set of timeouts for the various CRUD operations that might be performed
         on this resource's nested resources. Timeout values are specified as duration strings, such as `"5ms"` (5
@@ -1431,9 +1473,9 @@ class ConstructRequest(google.protobuf.message.Message):
             update: builtins.str = ...,
             delete: builtins.str = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal["create", b"create", "delete", b"delete", "update", b"update"]) -> None: ...
+        def ClearField(self, field_name: typing.Literal["create", b"create", "delete", b"delete", "update", b"update"]) -> None: ...
 
-    @typing_extensions.final
+    @typing.final
     class ConfigEntry(google.protobuf.message.Message):
         DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -1447,9 +1489,9 @@ class ConstructRequest(google.protobuf.message.Message):
             key: builtins.str = ...,
             value: builtins.str = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+        def ClearField(self, field_name: typing.Literal["key", b"key", "value", b"value"]) -> None: ...
 
-    @typing_extensions.final
+    @typing.final
     class InputDependenciesEntry(google.protobuf.message.Message):
         DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -1464,10 +1506,10 @@ class ConstructRequest(google.protobuf.message.Message):
             key: builtins.str = ...,
             value: global___ConstructRequest.PropertyDependencies | None = ...,
         ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> builtins.bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+        def HasField(self, field_name: typing.Literal["value", b"value"]) -> builtins.bool: ...
+        def ClearField(self, field_name: typing.Literal["key", b"key", "value", b"value"]) -> None: ...
 
-    @typing_extensions.final
+    @typing.final
     class ProvidersEntry(google.protobuf.message.Message):
         DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -1481,7 +1523,7 @@ class ConstructRequest(google.protobuf.message.Message):
             key: builtins.str = ...,
             value: builtins.str = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+        def ClearField(self, field_name: typing.Literal["key", b"key", "value", b"value"]) -> None: ...
 
     PROJECT_FIELD_NUMBER: builtins.int
     STACK_FIELD_NUMBER: builtins.int
@@ -1512,9 +1554,6 @@ class ConstructRequest(google.protobuf.message.Message):
     """The project to which this resource and its nested resources will belong."""
     stack: builtins.str
     """The name of the stack being deployed into."""
-    @property
-    def config(self) -> google.protobuf.internal.containers.ScalarMap[builtins.str, builtins.str]:
-        """Configuration for the specified project and stack."""
     dryRun: builtins.bool
     """True if and only if the request is being made as part of a preview/dry run, in which case the provider should not
     actually construct the component.
@@ -1545,45 +1584,12 @@ class ConstructRequest(google.protobuf.message.Message):
 
     An optional parent resource that the component (and by extension, its nested resources) should be children of.
     """
-    @property
-    def inputs(self) -> google.protobuf.struct_pb2.Struct:
-        """The component resource's input properties. Unlike the inputs of custom resources, these will *not* have been
-        passed to a call to [](pulumirpc.ResourceProvider.Check). By virtue of their being a composition of other
-        resources, component resources are able to (and therefore expected) to validate their own inputs. Moreover,
-        [](pulumirpc.ResourceProvider.Check) will be called on any inputs passed to nested custom resources as usual.
-        """
-    @property
-    def inputDependencies(self) -> google.protobuf.internal.containers.MessageMap[builtins.str, global___ConstructRequest.PropertyDependencies]:
-        """A map of property dependencies for the component resource and its nested resources."""
-    @property
-    def providers(self) -> google.protobuf.internal.containers.ScalarMap[builtins.str, builtins.str]:
-        """A map of package names to provider references for the component resource and its nested resources."""
-    @property
-    def dependencies(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
-        """A list of URNs that this resource and its nested resources depend on."""
-    @property
-    def configSecretKeys(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
-        """A set of configuration keys whose values are [secret](output-secrets)."""
     organization: builtins.str
     """The organization to which this resource and its nested resources will belong."""
     protect: builtins.bool
     """True if and only if the resource (and by extension, its nested resources) should be marked as protected.
     Protected resources cannot be deleted without first being unprotected.
     """
-    @property
-    def aliases(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
-        """A list of additional URNs that should be considered the same as this component's URN (and which will therefore be
-        used to build aliases for its nested resource URNs). These may be URNs that previously referred to this component
-        e.g. if it had its parent (and consequently URN) changed.
-        """
-    @property
-    def additionalSecretOutputs(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
-        """A list of input properties whose values should be treated as [secret](output-secrets)."""
-    @property
-    def customTimeouts(self) -> global___ConstructRequest.CustomTimeouts:
-        """A set of custom timeouts that specify how long the caller is prepared to wait for the various CRUD operations of
-        this resource's nested resources.
-        """
     deletedWith: builtins.str
     """The URN of a resource that this resource (and thus its nested resources) will be implicitly deleted with. If the
     resource referred to by this URN is deleted in the same operation that this resource would be deleted, the
@@ -1592,12 +1598,6 @@ class ConstructRequest(google.protobuf.message.Message):
     """
     deleteBeforeReplace: builtins.bool
     """If true, this resource (and its nested resources) must be deleted *before* its replacement is created."""
-    @property
-    def ignoreChanges(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
-        """A set of [property paths](property-paths) that should be treated as unchanged."""
-    @property
-    def replaceOnChanges(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
-        """A set of properties that, when changed, trigger a replacement."""
     retainOnDelete: builtins.bool
     """True if [](pulumirpc.ResourceProvider.Delete) should *not* be called when the resource (and by extension, its
     nested resources) are removed from a Pulumi program.
@@ -1607,6 +1607,59 @@ class ConstructRequest(google.protobuf.message.Message):
     may be used to communicate dependency information and so there is no need to populate
     [](pulumirpc.ConstructResponse)'s `stateDependencies` field.
     """
+    @property
+    def config(self) -> google.protobuf.internal.containers.ScalarMap[builtins.str, builtins.str]:
+        """Configuration for the specified project and stack."""
+
+    @property
+    def inputs(self) -> google.protobuf.struct_pb2.Struct:
+        """The component resource's input properties. Unlike the inputs of custom resources, these will *not* have been
+        passed to a call to [](pulumirpc.ResourceProvider.Check). By virtue of their being a composition of other
+        resources, component resources are able to (and therefore expected) to validate their own inputs. Moreover,
+        [](pulumirpc.ResourceProvider.Check) will be called on any inputs passed to nested custom resources as usual.
+        """
+
+    @property
+    def inputDependencies(self) -> google.protobuf.internal.containers.MessageMap[builtins.str, global___ConstructRequest.PropertyDependencies]:
+        """A map of property dependencies for the component resource and its nested resources."""
+
+    @property
+    def providers(self) -> google.protobuf.internal.containers.ScalarMap[builtins.str, builtins.str]:
+        """A map of package names to provider references for the component resource and its nested resources."""
+
+    @property
+    def dependencies(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """A list of URNs that this resource and its nested resources depend on."""
+
+    @property
+    def configSecretKeys(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """A set of configuration keys whose values are [secret](output-secrets)."""
+
+    @property
+    def aliases(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """A list of additional URNs that should be considered the same as this component's URN (and which will therefore be
+        used to build aliases for its nested resource URNs). These may be URNs that previously referred to this component
+        e.g. if it had its parent (and consequently URN) changed.
+        """
+
+    @property
+    def additionalSecretOutputs(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """A list of input properties whose values should be treated as [secret](output-secrets)."""
+
+    @property
+    def customTimeouts(self) -> global___ConstructRequest.CustomTimeouts:
+        """A set of custom timeouts that specify how long the caller is prepared to wait for the various CRUD operations of
+        this resource's nested resources.
+        """
+
+    @property
+    def ignoreChanges(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """A set of [property paths](property-paths) that should be treated as unchanged."""
+
+    @property
+    def replaceOnChanges(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """A set of properties that, when changed, trigger a replacement."""
+
     def __init__(
         self,
         *,
@@ -1636,18 +1689,18 @@ class ConstructRequest(google.protobuf.message.Message):
         retainOnDelete: builtins.bool = ...,
         accepts_output_values: builtins.bool = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["customTimeouts", b"customTimeouts", "inputs", b"inputs"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["accepts_output_values", b"accepts_output_values", "additionalSecretOutputs", b"additionalSecretOutputs", "aliases", b"aliases", "config", b"config", "configSecretKeys", b"configSecretKeys", "customTimeouts", b"customTimeouts", "deleteBeforeReplace", b"deleteBeforeReplace", "deletedWith", b"deletedWith", "dependencies", b"dependencies", "dryRun", b"dryRun", "ignoreChanges", b"ignoreChanges", "inputDependencies", b"inputDependencies", "inputs", b"inputs", "monitorEndpoint", b"monitorEndpoint", "name", b"name", "organization", b"organization", "parallel", b"parallel", "parent", b"parent", "project", b"project", "protect", b"protect", "providers", b"providers", "replaceOnChanges", b"replaceOnChanges", "retainOnDelete", b"retainOnDelete", "stack", b"stack", "type", b"type"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["customTimeouts", b"customTimeouts", "inputs", b"inputs"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["accepts_output_values", b"accepts_output_values", "additionalSecretOutputs", b"additionalSecretOutputs", "aliases", b"aliases", "config", b"config", "configSecretKeys", b"configSecretKeys", "customTimeouts", b"customTimeouts", "deleteBeforeReplace", b"deleteBeforeReplace", "deletedWith", b"deletedWith", "dependencies", b"dependencies", "dryRun", b"dryRun", "ignoreChanges", b"ignoreChanges", "inputDependencies", b"inputDependencies", "inputs", b"inputs", "monitorEndpoint", b"monitorEndpoint", "name", b"name", "organization", b"organization", "parallel", b"parallel", "parent", b"parent", "project", b"project", "protect", b"protect", "providers", b"providers", "replaceOnChanges", b"replaceOnChanges", "retainOnDelete", b"retainOnDelete", "stack", b"stack", "type", b"type"]) -> None: ...
 
 global___ConstructRequest = ConstructRequest
 
-@typing_extensions.final
+@typing.final
 class ConstructResponse(google.protobuf.message.Message):
     """`ConstructResponse` is the type of responses sent by a [](pulumirpc.ResourceProvider.Construct) call."""
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
-    @typing_extensions.final
+    @typing.final
     class PropertyDependencies(google.protobuf.message.Message):
         """A `PropertyDependencies` list is a set of URNs that a particular property may depend on."""
 
@@ -1657,14 +1710,15 @@ class ConstructResponse(google.protobuf.message.Message):
         @property
         def urns(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
             """A list of URNs that this property depends on."""
+
         def __init__(
             self,
             *,
             urns: collections.abc.Iterable[builtins.str] | None = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal["urns", b"urns"]) -> None: ...
+        def ClearField(self, field_name: typing.Literal["urns", b"urns"]) -> None: ...
 
-    @typing_extensions.final
+    @typing.final
     class StateDependenciesEntry(google.protobuf.message.Message):
         DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -1679,8 +1733,8 @@ class ConstructResponse(google.protobuf.message.Message):
             key: builtins.str = ...,
             value: global___ConstructResponse.PropertyDependencies | None = ...,
         ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> builtins.bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
+        def HasField(self, field_name: typing.Literal["value", b"value"]) -> builtins.bool: ...
+        def ClearField(self, field_name: typing.Literal["key", b"key", "value", b"value"]) -> None: ...
 
     URN_FIELD_NUMBER: builtins.int
     STATE_FIELD_NUMBER: builtins.int
@@ -1690,12 +1744,14 @@ class ConstructResponse(google.protobuf.message.Message):
     @property
     def state(self) -> google.protobuf.struct_pb2.Struct:
         """Any output properties that the component registered as part of its construction."""
+
     @property
     def stateDependencies(self) -> google.protobuf.internal.containers.MessageMap[builtins.str, global___ConstructResponse.PropertyDependencies]:
         """A map of property dependencies for the component's outputs. This will be set if the caller indicated that it
         could not receive dependency-communicating [output](outputs) values by setting [](pulumirpc.ConstructRequest)'s
         `accepts_output_values` field to false.
         """
+
     def __init__(
         self,
         *,
@@ -1703,12 +1759,12 @@ class ConstructResponse(google.protobuf.message.Message):
         state: google.protobuf.struct_pb2.Struct | None = ...,
         stateDependencies: collections.abc.Mapping[builtins.str, global___ConstructResponse.PropertyDependencies] | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["state", b"state"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["state", b"state", "stateDependencies", b"stateDependencies", "urn", b"urn"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["state", b"state"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["state", b"state", "stateDependencies", b"stateDependencies", "urn", b"urn"]) -> None: ...
 
 global___ConstructResponse = ConstructResponse
 
-@typing_extensions.final
+@typing.final
 class ErrorResourceInitFailed(google.protobuf.message.Message):
     """ErrorResourceInitFailed is sent as a Detail `ResourceProvider.{Create, Update}` fail because a
     resource was created successfully, but failed to initialize.
@@ -1725,12 +1781,15 @@ class ErrorResourceInitFailed(google.protobuf.message.Message):
     @property
     def properties(self) -> google.protobuf.struct_pb2.Struct:
         """any properties that were computed during updating."""
+
     @property
     def reasons(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
         """error messages associated with initialization failure."""
+
     @property
     def inputs(self) -> google.protobuf.struct_pb2.Struct:
         """the current inputs to this resource (only applicable for Read)"""
+
     def __init__(
         self,
         *,
@@ -1739,12 +1798,12 @@ class ErrorResourceInitFailed(google.protobuf.message.Message):
         reasons: collections.abc.Iterable[builtins.str] | None = ...,
         inputs: google.protobuf.struct_pb2.Struct | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal["inputs", b"inputs", "properties", b"properties"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["id", b"id", "inputs", b"inputs", "properties", b"properties", "reasons", b"reasons"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["inputs", b"inputs", "properties", b"properties"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["id", b"id", "inputs", b"inputs", "properties", b"properties", "reasons", b"reasons"]) -> None: ...
 
 global___ErrorResourceInitFailed = ErrorResourceInitFailed
 
-@typing_extensions.final
+@typing.final
 class GetMappingRequest(google.protobuf.message.Message):
     """GetMappingRequest allows providers to return ecosystem specific information to allow the provider to be
     converted from a source markup to Pulumi. It's expected that provider bridges that target a given ecosystem
@@ -1769,11 +1828,11 @@ class GetMappingRequest(google.protobuf.message.Message):
         key: builtins.str = ...,
         provider: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "provider", b"provider"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["key", b"key", "provider", b"provider"]) -> None: ...
 
 global___GetMappingRequest = GetMappingRequest
 
-@typing_extensions.final
+@typing.final
 class GetMappingResponse(google.protobuf.message.Message):
     """GetMappingResponse returns convert plugin specific data for this provider. This will normally be human
     readable JSON, but the engine doesn't mandate any form.
@@ -1793,11 +1852,11 @@ class GetMappingResponse(google.protobuf.message.Message):
         provider: builtins.str = ...,
         data: builtins.bytes = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["data", b"data", "provider", b"provider"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "provider", b"provider"]) -> None: ...
 
 global___GetMappingResponse = GetMappingResponse
 
-@typing_extensions.final
+@typing.final
 class GetMappingsRequest(google.protobuf.message.Message):
     """GetMappingsRequest allows providers to return ecosystem specific information without having to send back large data
     blobs for provider mappings that the engine doesn't then need.
@@ -1813,11 +1872,11 @@ class GetMappingsRequest(google.protobuf.message.Message):
         *,
         key: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["key", b"key"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["key", b"key"]) -> None: ...
 
 global___GetMappingsRequest = GetMappingsRequest
 
-@typing_extensions.final
+@typing.final
 class GetMappingsResponse(google.protobuf.message.Message):
     """GetMappingsRequest returns a list of providers that this provider can provide mapping information for."""
 
@@ -1829,11 +1888,12 @@ class GetMappingsResponse(google.protobuf.message.Message):
         """the provider keys this provider can supply mappings for. For example the Pulumi provider "terraform-template"
         would return ["template"] for this.
         """
+
     def __init__(
         self,
         *,
         providers: collections.abc.Iterable[builtins.str] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["providers", b"providers"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["providers", b"providers"]) -> None: ...
 
 global___GetMappingsResponse = GetMappingsResponse
